@@ -58,8 +58,10 @@ public class MenuInputProcessor extends GDInputProcessor{
 						towerDefense.switchScreen(towerDefense.getLvlSelectScreen());
 						break;
 					case MainMenuScreen.LEVEL_SELECT:
+						towerDefense.switchScreen(towerDefense.getSettingScreen());
 						break;
 					case MainMenuScreen.ABOUT:
+						towerDefense.switchScreen(towerDefense.getAboutScreen());
 						break;
 					case MainMenuScreen.EXIT:
 						System.exit(1);
