@@ -71,7 +71,7 @@ public class GameState {
 		newRoundInitialization();
 		level = 1;
 		currentLevel = Level.generateLevel(level);	
-		money = 100;
+		money = 1000;
 		playerLife = 10;
 		roundTime = PRE_ROUND_WAIT_DURATION;
 		deployedTowers = new ArrayList<Tower>();
