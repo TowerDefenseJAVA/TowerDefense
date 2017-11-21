@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
+import gamedev.input.LvlSelectInputProcessor;
+import gamedev.input.SettingInputProcessor;
 import gamedev.td.GDSprite;
 import gamedev.td.SpriteManager;
 import gamedev.td.TowerDefense;
@@ -36,6 +38,8 @@ public class SettingScreen extends GDScreen{
 		initializeFont();
 		initializeButtons();
 		//this.inputProcessor = new LvlSelectInputProcessor(towerDefense, this);
+		this.inputProcessor = new SettingInputProcessor(towerDefense, this);
+		//建一個SettingInputProcessor的物件
 	}	
 	
 	

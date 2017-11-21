@@ -19,7 +19,7 @@ public class SettingInputProcessor extends GDInputProcessor{
 	
 
 	List<GDSprite> buttons;
-	private SettingScreen settingScreen;
+	private SettingScreen settingScreen;//宣告一個設定螢幕的物件
 
 	public SettingInputProcessor(TowerDefense towerDefense, SettingScreen screen){
 		super(towerDefense);
@@ -46,7 +46,7 @@ public class SettingInputProcessor extends GDInputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// TODO Auto-generated method stub
+		// 觸擊到的函式
 		
 		buttons = settingScreen.getButtons();
 		for (int i = 0; i < buttons.size(); i++) {
@@ -55,7 +55,6 @@ public class SettingInputProcessor extends GDInputProcessor{
 			if(Gdx.input.isButtonPressed(Buttons.LEFT))
 				if(sprite.contains(screenX, screenY)) {
 					switch(i) {
-
 					case SettingScreen.MAIN_MENU:
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
 						break;
