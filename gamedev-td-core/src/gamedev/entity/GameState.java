@@ -193,6 +193,7 @@ public class GameState {
 
 	/**
 	 * This should be called after every round.
+	 * 每一個回合必須
 	 */
 	public void prepareLevel(int lvl) {
 		newRoundInitialization();
@@ -215,13 +216,15 @@ public class GameState {
 		return money >= tower.getCost();
 	}
 
+	//設定一波幾秒生出
 	public void setWaveSpawnTime(float waveSpawnTime) {
 		if (waveSpawnTime < 0)
-			this.roundTime = 10;
+			this.roundTime = 5;
 		else
 			this.roundTime = waveSpawnTime;
 	}
 
+	//扣血
 	public void getDamaged() {
 		playerLife--;
 	}

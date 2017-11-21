@@ -18,14 +18,17 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
 public class LvlSelectScreen extends GDScreen{
+	//繼承GDScreen的畫面
 
-	OrthographicCamera camera;
-	SpriteBatch spriteBatch;
-	BitmapFont font;
+	
+	OrthographicCamera camera;//不懂
+	SpriteBatch spriteBatch;// is given a texture and coordinates for each rectangle to be drawn.
+	BitmapFont font;//LibGdx makes use of bitmap files (pngs) to render fonts.Each glyph in the font has a corresponding TextureRegion
 	private List<GDSprite> buttons;
 	public final static int MAP1 = 1, MAP2 = 2, MAP3 = 3, MAIN_MENU = 0;
-	GDSprite menuBtn, map1Btn, map2Btn, map3Btn, background;
+	GDSprite menuBtn, map1Btn, map2Btn, map3Btn, background;//宣告GDSprite(觸發圖形物件)的物件
 	
+	//建構子
 	public LvlSelectScreen(TowerDefense towerDefense) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.setToOrtho(true);
@@ -34,9 +37,10 @@ public class LvlSelectScreen extends GDScreen{
 		
 		spriteBatch.setProjectionMatrix(camera.combined);
 		
-		initializeFont();
-		initializeButtons();
+		initializeFont();//初始化
+		initializeButtons();//初始化按鈕物件
 		this.inputProcessor = new LvlSelectInputProcessor(towerDefense, this);
+		//選擇頁面的背後選擇處理
 	}
 	
 	private void initializeButtons() {
