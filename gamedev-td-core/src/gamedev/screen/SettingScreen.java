@@ -22,8 +22,8 @@ public class SettingScreen extends GDScreen{
 	SpriteBatch spriteBatch;
 	BitmapFont font;
 	private List<GDSprite> buttons;
-	
-	GDSprite background;
+	public final static int MAIN_MENU = 0;
+	GDSprite background,menuBtn;
 	
 	public SettingScreen(TowerDefense towerDefense) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -44,6 +44,10 @@ public class SettingScreen extends GDScreen{
 		SpriteManager spriteManager = SpriteManager.getInstance();
 		background = spriteManager.getSprite("lvlselectbg");
 		background.setPosition(0, 0);
+		
+		menuBtn = spriteManager.getSprite("back_to_menu_button");
+		menuBtn.setPosition(160,520);
+		buttons.add(menuBtn);
 	}
 	
 	private void initializeFont() {
