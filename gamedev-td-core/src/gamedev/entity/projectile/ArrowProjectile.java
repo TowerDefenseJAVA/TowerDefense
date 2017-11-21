@@ -17,7 +17,6 @@ public class ArrowProjectile extends Projectile {
 
 	protected float getAngle(){
 		return super.getAngle() + 45;
-		
 	}
 
 
