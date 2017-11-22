@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
-public class TextureFactory {
+public class TextureFactory {				//用於讀取對應的圖檔
 	
 	private static HashMap<String, Texture> textures = new HashMap<String, Texture>();
 	private static HashMap<String, Texture> projectiles = new HashMap<String, Texture>();
