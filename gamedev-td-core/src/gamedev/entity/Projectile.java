@@ -26,13 +26,13 @@ public abstract class Projectile extends Entity {				//塔射出的物件類別
 	
 	public Projectile(GDSprite sprite, Vector2 position, int damage, float speed, Enemy target){
 		super(sprite);
-		this.position = position;
-		this.damage = damage;
-		this.speed = speed;
-		this.target = target;
-		this.angle = getAngle();
-		slowDuration = 0;
-		active = true;
+		this.position = position;								//初始位置
+		this.damage = damage;									//初始傷害
+		this.speed = speed;										//初始速度
+		this.target = target;									//初始目標
+		this.angle = getAngle();								//初始角度
+		slowDuration = 0;										//緩速時間歸零
+		active = true;											//設定物件為 存活
 	}
 	
 	public void draw(SpriteBatch spriteBatch){
