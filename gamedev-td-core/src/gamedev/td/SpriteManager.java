@@ -92,15 +92,39 @@ public class SpriteManager {
 	}
 
 	private void initializeTiles() {
-		GDSprite grass = createSpriteTile("grass");
-		GDSprite dirt = createSpriteTile("dirt");
-		GDSprite dark_dirt = createSpriteTile("dirt_dark");
+		//GDSprite grass = createSpriteTile("grass");
+		//GDSprite dirt = createSpriteTile("dirt");
+		//GDSprite dark_dirt = createSpriteTile("dirt_dark");
 		GDSprite steve = createSpriteTile("steve");
+		//GDSprite dinter = createSpriteTile("dinter");
+		GDSprite floor_yellow = createSpriteTile("floor_yellow");
+		GDSprite floor_white = createSpriteTile("floor_white");
+		GDSprite floor_black = createSpriteTile("floor_black");
 		
-		tiles.put("grass", grass.getTexture());
-		tiles.put("dirt", dirt.getTexture());
-		tiles.put("dark_dirt", dark_dirt.getTexture());
+		GDSprite water = createSpriteTile("water");
+		GDSprite grass = createSpriteTile("grass");
+		GDSprite fire = createSpriteTile("fire");
+		
+		GDSprite glass_light = createSpriteTile("glass_light");
+		GDSprite glass_dark = createSpriteTile("glass_dark");
+		GDSprite glass_special = createSpriteTile("glass_special");
+		
+		//tiles.put("grass", grass.getTexture());
+		//tiles.put("dirt", dirt.getTexture());
+		//tiles.put("dark_dirt", dark_dirt.getTexture());
 		tiles.put("steve", steve.getTexture());
+		
+		tiles.put("floor_yellow", floor_yellow.getTexture());
+		tiles.put("floor_white", floor_white.getTexture());
+		tiles.put("floor_black", floor_black.getTexture());
+		
+		tiles.put("water", water.getTexture());
+		tiles.put("grass", grass.getTexture());
+		tiles.put("fire", fire.getTexture());
+		
+		tiles.put("glass_light", glass_light.getTexture());
+		tiles.put("glass_dark", glass_dark.getTexture());
+		tiles.put("glass_special", glass_special.getTexture());
 	}
 
 	private static GDSprite createSpriteTile(String name){

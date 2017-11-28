@@ -1,2 +1,7 @@
 eclipse.preferences.version=1
+encoding//src/gamedev/entity/Enemy.java=UTF-8
+encoding//src/gamedev/entity/Entity.java=UTF-8
+encoding//src/gamedev/entity/GameState.java=UTF-8
 encoding//src/gamedev/entity/Projectile.java=UTF-8
+encoding//src/gamedev/entity/TextureFactory.java=UTF-8
+encoding//src/gamedev/entity/Tile.java=UTF-8

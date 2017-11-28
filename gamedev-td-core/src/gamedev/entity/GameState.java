@@ -275,7 +275,7 @@ public class GameState {										//此Class用於管理當前遊戲當前整體
 
 	public boolean isTowerPlaceable(Point point) {				//用於確認該目標點是否可以建造塔
 		try {
-			return point.x > 0 && point.y > 0 && grid[point.x / 40][point.y / 40] != TileType.Dirt;	//座標合法 且 該座標並非怪物行走路徑		
+			return point.x > 0 && point.y > 0 &&  ( (grid[point.x / 40][point.y / 40] == TileType.floor_yellow) || (grid[point.x / 40][point.y / 40] == TileType.glass_special)) ;	//座標合法 且 該座標並非怪物行走路徑		
 		}catch (Exception e){
 			
 		}

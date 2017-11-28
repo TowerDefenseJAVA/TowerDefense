@@ -30,8 +30,32 @@ public class TextureFactory {				//用於讀取對應的圖檔
 			else if(key.equals("steve")){
 				path = "assets/img/steve.png";
 			}
-			else if(key.equals("dirtdark")){
-				path = "assets/img/dirt_dark.png";
+			else if(key.equals("floor_yellow")){
+				path = "assets/img/floor_Yellow.png";
+			}
+			else if(key.equals("floor_white")){
+				path = "assets/img/floor_white.png";
+			}
+			else if(key.equals("floor_black")){
+				path = "assets/img/floor_black.png";
+			}
+			else if(key.equals("water")){
+				path = "assets/img/water.png";
+			}
+			else if(key.equals("grass")){
+				path = "assets/img/grass.png";
+			}
+			else if(key.equals("fire")){
+				path = "assets/img/fire.png";
+			}
+			else if(key.equals("glass_light")){
+				path = "assets/img/glass_light.png";
+			}
+			else if(key.equals("glass_dark")){
+				path = "assets/img/glass_dark.png";
+			}
+			else if(key.equals("glass_special")){
+				path = "assets/img/glass_special.png";
 			}
 			else if(key.equals("highlight")){
 				path = "assets/img/tile_highlight.png";
