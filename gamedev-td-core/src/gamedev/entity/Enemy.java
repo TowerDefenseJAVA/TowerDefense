@@ -24,9 +24,12 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 
 	protected float angle;
 	private int health;
+	private final int maxHealth;
 	private int moneyReward;
 	protected float speed;
 	protected float slowedSpeed;
+	protected float potionAilmentTimer = 0;
+	protected float potionColdDown = 0;
 	protected List<Point> waypoints;
 	protected Dir dir;
 	protected float slowAilmentTimer = 0;
@@ -79,6 +82,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		this.active = true;												//設定怪物為 活著
 		this.angle = 0;													//初始角度為0
 		this.health = health;											//設定怪物血量
+		this.maxHealth = health;
 		this.moneyReward = moneyReward;									//設定金幣獎賞數量
 		this.speed = speed;												//設定怪物速度
 		this.slowedSpeed = speed * .6f;									//設定怪物遭緩速debuff時的移動速度
@@ -92,7 +96,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		super.update(delta);
 		checkIfReachedThePlayer(delta);									//用於檢查怪物是否已經走到終點
 		float actualSpeed = getSpeed(delta);							//取得怪物當前實際速度
-
+		damagedByPotion(delta);											//若當前為中毒狀態則扣除總血量1%
 		if (!waypoints.isEmpty()) {										//當還沒有走到終點時
 			Point waypoint = waypoints.get(0);							//取得下一個可以走的位置
 
@@ -173,6 +177,10 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		slowAilmentTimer = time;
 	}
 
+	public void potionBySource(float time) {
+		potionAilmentTimer = time;
+	}
+	
 	public void damagedBySource(int damage){							//怪物被物件攻擊時 扣除damage值的血量
 		health -= damage;
 		if(health <= 0){												//當怪物生命值歸零時 
@@ -180,6 +188,25 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 			GameState state = GameState.getInstance();					//取得當前遊戲狀態
 			state.addMoney(this.moneyReward);							//為玩家添加相對應的金錢獎勵
 		}
+	}
+	
+	public void damagedByPotion(float delta) {
+		if(this.potionColdDown < 0 && this.active == true) {
+			if(potionAilmentTimer > 0) {
+				potionAilmentTimer -= delta;
+				health -= 0.1*maxHealth;
+			}
+			if(health<=0 && this.active == true) {
+				this.active = false;
+				GameState state = GameState.getInstance();
+				state.addMoney(this.moneyReward);
+			}
+			potionColdDown = 1;
+			System.out.println("got Potion");
+		}else {
+			potionColdDown -= delta;
+		}
+		
 	}
 	
 	public static EnemyType interpretType(int type){				//根據輸入的type來回傳對應的怪物EnumType類型

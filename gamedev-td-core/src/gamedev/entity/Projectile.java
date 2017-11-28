@@ -21,7 +21,7 @@ public abstract class Projectile extends Entity {				//塔射出的物件類別
 	}
 	
 	private int damage;											//該物件可造成的傷害
-	protected float speed, angle, slowDuration;					//該物件的速度 角度 以及減速
+	protected float speed, angle, slowDuration , potionDuration;//該物件的速度 角度 以及減速
 	protected Enemy target;										//該物件瞄準的敵人目標
 	
 	public Projectile(GDSprite sprite, Vector2 position, int damage, float speed, Enemy target){
@@ -31,6 +31,7 @@ public abstract class Projectile extends Entity {				//塔射出的物件類別
 		this.speed = speed;										//初始速度
 		this.target = target;									//初始目標
 		this.angle = getAngle();								//初始角度
+		potionDuration = 0;
 		slowDuration = 0;										//緩速時間歸零
 		active = true;											//設定物件為 存活
 	}
@@ -57,6 +58,7 @@ public abstract class Projectile extends Entity {				//塔射出的物件類別
 					if(collided && active){						//如果有產生碰撞 且此物件本身仍為存活狀態
 						enemy.damagedBySource(this.damage);		//對敵人造成 damage的傷害
 						enemy.slowedBySource(this.slowDuration);//對敵人造成slowDuration秒數的緩速延遲效果
+						enemy.potionBySource(this.potionDuration);//對敵人造成potionDuration秒的中毒效果
 						this.active = false;					//由於已經打到敵人  因此將此物件殺死
 					}
 				}

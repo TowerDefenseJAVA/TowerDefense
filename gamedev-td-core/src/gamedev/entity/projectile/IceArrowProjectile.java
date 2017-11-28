@@ -10,9 +10,12 @@ public class IceArrowProjectile extends ArrowProjectile{
 	public IceArrowProjectile(GDSprite sprite, Vector2 position, int damage,
 			float speed, Enemy target) {
 		super(sprite, position, damage, speed, target);
-		// TODO Auto-generated constructor stub
+		this.angle = getAngle();
 	}
-
+	
+	protected float getAngle() {
+		return super.getAngle()+45;
+	}
 
 
 }
