@@ -32,12 +32,10 @@ public class SettingScreen extends GDScreen{
 		camera.setToOrtho(true);
 		
 		spriteBatch = new SpriteBatch();
-		
 		spriteBatch.setProjectionMatrix(camera.combined);
 		
 		initializeFont();
 		initializeButtons();
-		//this.inputProcessor = new LvlSelectInputProcessor(towerDefense, this);
 		this.inputProcessor = new SettingInputProcessor(towerDefense, this);
 		//建一個SettingInputProcessor的物件
 	}	

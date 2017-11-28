@@ -27,7 +27,8 @@ public class TowerDefense extends Game {
 		mainMenuScreen = new MainMenuScreen(this);
 		gameScreen = new GameScreen(this);
 		gameOverScreen = new GameOverScreen(this);
-		aboutScreen=new AboutScreen(this);//Doing
+		
+		setAboutScreen(new AboutScreen(this));
 		setSettingScreen(new SettingScreen(this));
 		setLvlSelectScreen(new LvlSelectScreen(this));
 		setPauseScreen(new PauseScreen(this));
