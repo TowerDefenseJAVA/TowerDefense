@@ -36,6 +36,7 @@ public class AboutScreen extends GDScreen{
 		initializeFont();
 		initializeButtons();
 		this.inputProcessor = new AboutInputProcessor(towerDefense, this);
+		//AboutInputProcessor的建構子
 	}	
 	
 	
