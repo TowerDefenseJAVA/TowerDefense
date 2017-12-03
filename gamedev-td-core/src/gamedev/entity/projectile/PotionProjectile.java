@@ -14,5 +14,8 @@ public class PotionProjectile extends Projectile {
 		// TODO Auto-generated constructor stub
 		this.potionDuration = 1;
 	}
-
+	protected float getAngle() {
+		return super.getAngle()+45;
+	}	
+	
 }

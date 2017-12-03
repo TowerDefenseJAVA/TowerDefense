@@ -11,11 +11,12 @@ public class IceArrowProjectile extends ArrowProjectile{
 			float speed, Enemy target) {
 		super(sprite, position, damage, speed, target);
 		this.angle = getAngle();
+		this.icedDuration = 1;
 	}
 	
 	protected float getAngle() {
 		return super.getAngle()+45;
 	}
 
-
+	
 }

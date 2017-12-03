@@ -28,8 +28,12 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 	private int moneyReward;
 	protected float speed;
 	protected float slowedSpeed;
+	protected float icedSpeed;
 	protected float potionAilmentTimer = 0;
+	protected float burnedAilmentTimer =0;
 	protected float potionColdDown = 0;
+	protected float burnedColdDown = 0;
+	protected float icedAilmentTimer =0;
 	protected List<Point> waypoints;
 	protected Dir dir;
 	protected float slowAilmentTimer = 0;
@@ -85,6 +89,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		this.maxHealth = health;
 		this.moneyReward = moneyReward;									//設定金幣獎賞數量
 		this.speed = speed;												//設定怪物速度
+		this.icedSpeed = 0;
 		this.slowedSpeed = speed * .6f;									//設定怪物遭緩速debuff時的移動速度
 		this.position = Vector2.Zero;									//初始化怪物位置為 ZERO這個位置  尚未定義
 		this.waypoints = waypointList;									//給予怪物一條 可以行走的路徑值
@@ -155,7 +160,10 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 			sprite.setY(this.position.y);
 			sprite.setRotation(this.angle);
 			if(slowAilmentTimer > 0){
-				sprite.setColor(Config.green);
+				sprite.setColor(Config.yellow);
+			}
+			else if(potionAilmentTimer > 0) {
+				sprite.setColor(Config.blue);
 			}
 			else{
 				sprite.setColor(Config.normal);
@@ -165,7 +173,11 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 	}
 	
 	protected float getSpeed(float delta){								//取得當前速度
-		if(slowAilmentTimer > 0){										//若當前為被緩速的狀態
+		if(this.icedAilmentTimer >0) {
+			icedAilmentTimer -= delta;
+			return icedSpeed;
+		}
+		else if(slowAilmentTimer > 0){										//若當前為被緩速的狀態
 			slowAilmentTimer -= delta;									//緩速持續時間減少 delta
 			return slowedSpeed;											//回傳 被緩速時的速度
 		}
@@ -176,7 +188,15 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 	public void slowedBySource(float time){								//設定被緩速持續時間
 		slowAilmentTimer = time;
 	}
-
+	
+	public void icedBySource(float time) {
+		icedAilmentTimer = time;
+	}
+	
+	public void burnedBySource(float time) {
+		burnedAilmentTimer = time;
+	}
+	
 	public void potionBySource(float time) {
 		potionAilmentTimer = time;
 	}
@@ -207,6 +227,24 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 			potionColdDown -= delta;
 		}
 		
+	}
+	
+	public void damagedByBurned(float delta) {
+		if(this.burnedColdDown < 0 && this.active == true) {
+			if(burnedAilmentTimer > 0) {
+				burnedAilmentTimer -= delta;
+				health -= 0.2*maxHealth;
+			}
+			if(health<=0 && this.active == true) {
+				this.active = false;
+				GameState state = GameState.getInstance();
+				state.addMoney(this.moneyReward);
+			}
+			burnedColdDown = 1;
+			System.out.println("got Burned");
+		}else {
+			burnedColdDown -= delta;
+		}
 	}
 	
 	public static EnemyType interpretType(int type){				//根據輸入的type來回傳對應的怪物EnumType類型

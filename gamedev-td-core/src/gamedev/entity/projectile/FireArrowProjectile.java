@@ -11,6 +11,7 @@ public class FireArrowProjectile extends ArrowProjectile{
 			float speed, Enemy target) {
 		super(sprite, position, damage, speed, target);
 		this.angle = getAngle();
+		this.burnedDuration = 1;
 	}
 	
 	protected float getAngle() {
