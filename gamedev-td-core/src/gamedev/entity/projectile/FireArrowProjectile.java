@@ -10,9 +10,13 @@ public class FireArrowProjectile extends ArrowProjectile{
 	public FireArrowProjectile(GDSprite sprite, Vector2 position, int damage,
 			float speed, Enemy target) {
 		super(sprite, position, damage, speed, target);
-		// TODO Auto-generated constructor stub
+		this.angle = getAngle();
+		this.burnedDuration = 1;
 	}
-
+	
+	protected float getAngle() {
+		return super.getAngle() + 45;
+	}
 
 
 

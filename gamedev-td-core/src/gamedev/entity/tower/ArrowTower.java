@@ -6,7 +6,7 @@ import gamedev.td.GDSprite;
 public class ArrowTower extends Tower{
 	
 	private int maxLevel = 5;
-	private static int damageLevels[] = {10};
+	private static int damageLevels[] = {5};
 	private static int rangeLevels[] = {100};
 	private static float attackRateLevels[] = {1.5f};
 

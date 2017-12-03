@@ -6,7 +6,7 @@ import gamedev.td.GDSprite;
 public class PotionTower extends Tower {
 
 	private int maxLevel = 3;
-	private static int damageLevels[] = {5};
+	private static int damageLevels[] = {1};
 	private static int rangeLevels[] = {100};
 	private static float attackRateLevels[] = {0.9f};
 	

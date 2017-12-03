@@ -56,6 +56,8 @@ public class GameUserInterface {
 		GDSprite eggTower = spriteManager.getTower(TowerType.Egg_Tower);
 		GDSprite potionTower = spriteManager.getTower(TowerType.Potion_Tower);
 		GDSprite currencyTower = spriteManager.getTower(TowerType.Currency_Tower);
+		GDSprite icedTower = spriteManager.getTower(TowerType.Ice_Arrow_Tower);
+		GDSprite firedTower = spriteManager.getTower(TowerType.Fire_Arrow_Tower);
 
 		int offset = 3, y = 13;
 		dirtTower.setPosition(Config.tileSize, y * Config.tileSize);
@@ -63,12 +65,16 @@ public class GameUserInterface {
 		eggTower.setPosition(Config.tileSize * 3 + offset * 2, y * Config.tileSize);
 		potionTower.setPosition(Config.tileSize * 4 + offset * 3, y * Config.tileSize);
 		currencyTower.setPosition(Config.tileSize * 5 + offset * 4, y * Config.tileSize);
+		icedTower.setPosition(Config.tileSize * 6 + offset * 5, y * Config.tileSize);
+		firedTower.setPosition(Config.tileSize * 7 + offset * 6, y * Config.tileSize);
 
 		btnsBuildTower.add(dirtTower);
 		btnsBuildTower.add(arrowTower);
 		btnsBuildTower.add(eggTower);
 		btnsBuildTower.add(potionTower);
 		btnsBuildTower.add(currencyTower);
+		btnsBuildTower.add(icedTower);
+		btnsBuildTower.add(firedTower);
 	}
 
 	public GameUserInterface() {

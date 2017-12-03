@@ -93,6 +93,12 @@ public class TextureFactory {				//用於讀取對應的圖檔
 			else if(key.equals("currency_tower")){
 				path = "assets/img/new_currency_tower.png";
 			}
+			else if(key.equals("ice_arrow_tower")) {
+				path = "assets/img/new_ice_arrow_tower.png";
+			}
+			else if(key.equals("fire_arrow_tower")) {
+				path = "assets/img/new_fire_arrow_tower.png";
+			}
 			else if(key.equals("tower_highlight")){
 				path = "assets/img/ui_tower_highlight.png";
 			}

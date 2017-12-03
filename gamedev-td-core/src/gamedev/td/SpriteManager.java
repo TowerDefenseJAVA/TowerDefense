@@ -51,12 +51,16 @@ public class SpriteManager {
 		GDSprite eggTower = createSpriteTile("egg_tower");
 		GDSprite potionTower = createSpriteTile("potion_tower");
 		GDSprite currencyTower = createSpriteTile("currency_tower");
+		GDSprite iceArrowTower = createSpriteTile("ice_arrow_tower");
+		GDSprite fireArrowTower = createSpriteTile("fire_arrow_tower");
 		
 		towers.put("dirt", dirtTower.getTexture());
 		towers.put("arrow", arrowTower.getTexture());
 		towers.put("egg", eggTower.getTexture());
 		towers.put("potion", potionTower.getTexture());
 		towers.put("currency", currencyTower.getTexture());
+		towers.put("ice_arrow", iceArrowTower.getTexture());
+		towers.put("fire_arrow", fireArrowTower.getTexture());
 	}
 
 	private void initializeUserInterface() {
