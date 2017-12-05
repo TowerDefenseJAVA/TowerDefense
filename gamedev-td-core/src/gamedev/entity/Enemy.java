@@ -101,7 +101,8 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		super.update(delta);
 		checkIfReachedThePlayer(delta);									//用於檢查怪物是否已經走到終點
 		float actualSpeed = getSpeed(delta);							//取得怪物當前實際速度
-		damagedByPotion(delta);											//若當前為中毒狀態則扣除總血量1%
+		damagedByPotion(delta);											//若當前為中毒狀態則扣除總血量10%
+		damagedByBurned(delta);
 		if (!waypoints.isEmpty()) {										//當還沒有走到終點時
 			Point waypoint = waypoints.get(0);							//取得下一個可以走的位置
 
@@ -159,11 +160,17 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 			sprite.setX(this.position.x);
 			sprite.setY(this.position.y);
 			sprite.setRotation(this.angle);
-			if(slowAilmentTimer > 0){
+			if(burnedAilmentTimer > 0) {
+				sprite.setColor(Config.red);
+			}
+			else if(icedAilmentTimer > 0) {
+				sprite.setColor(Config.blue);
+			}
+			else if(slowAilmentTimer > 0){
 				sprite.setColor(Config.yellow);
 			}
 			else if(potionAilmentTimer > 0) {
-				sprite.setColor(Config.blue);
+				sprite.setColor(Config.green);
 			}
 			else{
 				sprite.setColor(Config.normal);
@@ -211,7 +218,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 	}
 	
 	public void damagedByPotion(float delta) {
-		if(this.potionColdDown < 0 && this.active == true) {
+		if(this.potionColdDown <= 0 && this.active == true) {
 			if(potionAilmentTimer > 0) {
 				potionAilmentTimer -= delta;
 				health -= 0.1*maxHealth;
@@ -222,7 +229,6 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 				state.addMoney(this.moneyReward);
 			}
 			potionColdDown = 1;
-			System.out.println("got Potion");
 		}else {
 			potionColdDown -= delta;
 		}
@@ -230,7 +236,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 	}
 	
 	public void damagedByBurned(float delta) {
-		if(this.burnedColdDown < 0 && this.active == true) {
+		if(this.burnedColdDown <= 0 && this.active == true) {
 			if(burnedAilmentTimer > 0) {
 				burnedAilmentTimer -= delta;
 				health -= 0.2*maxHealth;
@@ -241,7 +247,6 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 				state.addMoney(this.moneyReward);
 			}
 			burnedColdDown = 1;
-			System.out.println("got Burned");
 		}else {
 			burnedColdDown -= delta;
 		}
