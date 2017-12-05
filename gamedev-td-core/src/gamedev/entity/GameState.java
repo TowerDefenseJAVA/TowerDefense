@@ -22,7 +22,7 @@ public class GameState {										//此Class用於管理當前遊戲當前整體
 	/**
 	 * One full round lasts thirty (30) seconds.
 	 */
-	private static final float ROUND_DURATION = 30;				//回合持續時間
+	private static final float ROUND_DURATION = 60;				//回合持續時間
 
 	private static final float PRE_ROUND_WAIT_DURATION = 5;		//每回合等待時間
 

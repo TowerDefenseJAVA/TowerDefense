@@ -29,7 +29,7 @@ public class Level {
 	
 				int[][] enemies = {
 					// instances, enemy type
-					{5, 1}
+					{50, 1}
 				};
 	
 				level = new Level(enemies);
@@ -38,7 +38,7 @@ public class Level {
 			case 2:
 				int[][] enemies2 = {
 						// instances, enemy type
-						{10, 1}
+						{50, 1}
 					};
 	
 				level = new Level(enemies2);
@@ -46,7 +46,7 @@ public class Level {
 			case 3:
 				int[][] enemies3 = {
 					// instances, enemy type
-					{5,2}
+					{50,2}
 				};
 	
 			level = new Level(enemies3);
@@ -54,7 +54,7 @@ public class Level {
 			case 4:
 				int[][] enemies4 = {
 					// instances, enemy type
-					{5, 1}, {5,2}
+					{50, 1}, {50,2}
 				};
 	
 			level = new Level(enemies4);

@@ -62,14 +62,14 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		
 		
 		case Spider:				//怪物為  蜘蛛
-			health = 20;
+			health = 200;
 			moneyReward = 5;
-			speed = 1.5f;
+			speed = 0.5f;
 			enemy = new Spider(sprite, health, moneyReward, speed, waypointList);
 			return enemy;
 			
 		case Skeleton:				//怪物為 骷髏
-			health = 50;
+			health = 500;
 			moneyReward = 8;
 			speed = 1;
 			enemy = new Skeleton(sprite, health, moneyReward, speed, waypointList);
