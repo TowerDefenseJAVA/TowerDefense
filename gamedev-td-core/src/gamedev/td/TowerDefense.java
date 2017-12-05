@@ -11,6 +11,8 @@ import gamedev.screen.SettingScreen;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
+import com.badlogic.gdx.audio.Sound;
 
 public class TowerDefense extends Game {
 
@@ -34,7 +36,7 @@ public class TowerDefense extends Game {
 		setPauseScreen(new PauseScreen(this));
 		
 		switchScreen(mainMenuScreen);
-		
+
 	}
 	
 	public void switchScreen(GDScreen screen){
