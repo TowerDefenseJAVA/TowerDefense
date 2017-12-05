@@ -48,10 +48,10 @@ public class TowerFactory {
 				return new CorruptedEggTower(towerSprite, level, cost);
 			case Fire_Arrow_Tower:
 				cost = 200;
-				return new IceArrowTower(towerSprite, level, cost);
+				return new FireArrowTower(towerSprite, level, cost);
 			case Ice_Arrow_Tower:
 				cost = 250;
-				return new FireArrowTower(towerSprite, level, cost);
+				return new IceArrowTower(towerSprite, level, cost);
 			case Sand_Tower:
 				cost = 120;
 				return new SandTower(towerSprite, level, cost);
@@ -70,9 +70,9 @@ public class TowerFactory {
 		case 2: return TowerType.Egg_Tower;
 		case 3: return TowerType.Potion_Tower;
 		case 4: return TowerType.Currency_Tower;
-		case 5: return TowerType.Corrupted_Egg_Tower;
-		case 6: return TowerType.Ice_Arrow_Tower;
-		case 7: return TowerType.Fire_Arrow_Tower;
+		case 5: return TowerType.Ice_Arrow_Tower;
+		case 6: return TowerType.Fire_Arrow_Tower;//
+		case 7: return TowerType.Corrupted_Egg_Tower;//
 		}
 		return TowerType.Dirt_Tower;
 	}

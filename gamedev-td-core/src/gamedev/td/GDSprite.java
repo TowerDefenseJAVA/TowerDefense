@@ -10,6 +10,7 @@ public class GDSprite extends Sprite {
 	
 	public GDSprite(Texture texture) {
 		super(texture);
+		
 	}
 
 	public Point getPosition(){

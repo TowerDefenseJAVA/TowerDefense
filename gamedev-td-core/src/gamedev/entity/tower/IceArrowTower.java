@@ -1,8 +1,9 @@
 package gamedev.entity.tower;
 
+import gamedev.entity.Tower;
 import gamedev.td.GDSprite;
 
-public class IceArrowTower extends ArrowTower {
+public class IceArrowTower extends Tower {
 	
 	private int maxLevel = 5;
 	private static int damageLevels[] = {5};
@@ -10,7 +11,7 @@ public class IceArrowTower extends ArrowTower {
 	private static float attackRateLevels[] = {1.3f};
 	
 	public IceArrowTower(GDSprite sprite, int level, int cost) {
-		super(sprite, damageLevels[level], rangeLevels[level], attackRateLevels[level], cost, level, "FireArrow Tower");
+		super(sprite, damageLevels[level], rangeLevels[level], attackRateLevels[level], cost, level, "Ice Arrow Tower");
 	}
 
 	@Override

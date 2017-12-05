@@ -200,6 +200,7 @@ public class GameInputProcessor extends GDInputProcessor {
 //				Point spritePoint = sprite.getPosition();
 
 				TowerType towerType = TowerFactory.interpretType(i);
+				//System.out.println(towerType);//test only
 				towerToBuild = TowerFactory.createTower(towerType);
 				
 				userInterface.setTowerToBuild(towerToBuild, towerType);
