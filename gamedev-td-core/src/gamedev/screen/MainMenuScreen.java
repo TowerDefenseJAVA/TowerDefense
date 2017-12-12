@@ -114,7 +114,7 @@ public class MainMenuScreen extends GDScreen {
 		buttons.add(exitBtn);
 		
 		background = spriteManager.getSprite("main_background");
-		background.setPosition(0, 100);
+		background.setPosition(0, 0);
 		
 		title = spriteManager.getSprite("title");
 		title.setPosition(0, 100);
