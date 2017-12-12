@@ -21,8 +21,8 @@ public class TextureFactory {				//��霈������
 			else if(key.equals("grass")){
 				path = "assets/img/grass.png";
 			}
-			else if(key.equals("cursor")){
-				path = "assets/img/cursor.png";
+			else if(key.equals("tank")){
+				path = "assets/img/heart.png";
 			}
 			else if(key.equals("dirt")){
 				path = "assets/img/dirt_light.png";
