@@ -42,7 +42,6 @@ public class TowerDefense extends Game {
 	public void switchScreen(GDScreen screen){
 		setScreen(screen);
 		Gdx.input.setInputProcessor(screen.getInputProcessor());
-		
 	}
 
 	@Override

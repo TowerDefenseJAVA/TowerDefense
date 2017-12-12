@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 
 import gamedev.entity.GameState;
@@ -14,7 +15,7 @@ import gamedev.td.GDSprite;
 import gamedev.td.TowerDefense;
 
 public class LvlSelectInputProcessor extends GDInputProcessor{
-
+	Music music;
 	
 
 	List<GDSprite> buttons;
@@ -58,17 +59,25 @@ public class LvlSelectInputProcessor extends GDInputProcessor{
 						GameState.getInstance().initialize();
 						GameState.getInstance().setMap(LvlSelectScreen.MAP1);
 						towerDefense.switchScreen(towerDefense.getGameScreen());
+						music = Gdx.audio.newMusic(Gdx.files.internal("assets/map1.ogg"));
+						music.play();
 						break;
 					case LvlSelectScreen.MAIN_MENU:
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
+						music = Gdx.audio.newMusic(Gdx.files.internal("assets/menu_bg.ogg"));
+						music.play();
 						break;
 					case LvlSelectScreen.MAP2:
 						GameState.getInstance().setMap(LvlSelectScreen.MAP2);
 						towerDefense.switchScreen(towerDefense.getGameScreen());
+						music = Gdx.audio.newMusic(Gdx.files.internal("assets/map2.ogg"));
+						music.play();
 						break;
 					case LvlSelectScreen.MAP3:
 						GameState.getInstance().setMap(LvlSelectScreen.MAP3);
 						towerDefense.switchScreen(towerDefense.getGameScreen());
+						music = Gdx.audio.newMusic(Gdx.files.internal("assets/map3.ogg"));
+						music.play();
 						break;
 					}
 				}
