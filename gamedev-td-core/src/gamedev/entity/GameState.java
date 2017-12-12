@@ -14,7 +14,7 @@ import java.util.List;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public class GameState {										//此Class用於管理當前遊戲當前整體狀況
+public class GameState {										//甇七lass��蝞∠�������擃�瘜�
 	private static GameState instance;
 
 	public static final int GRIDX = 17, GRIDY = 12;
@@ -22,29 +22,30 @@ public class GameState {										//此Class用於管理當前遊戲當前整體
 	/**
 	 * One full round lasts thirty (30) seconds.
 	 */
-	private static final float ROUND_DURATION = 60;				//回合持續時間
+	private static final float ROUND_DURATION = 60;				//��������
 
-	private static final float PRE_ROUND_WAIT_DURATION = 5;		//每回合等待時間
+	private static final float PRE_ROUND_WAIT_DURATION = 5;		//瘥�������
 
-	private Level currentLevel;									//用於存取當前關卡數
-	private int mapType;										//用於存取當前是第幾張地圖
+	private Level currentLevel;									//��摮�����
+	private int mapType;										//��摮���蝚砍嗾撘萄���
 
-	private int level;											//關卡
-	private int money = 0;										//預設金錢
-	private int playerLife = 10;								//預設玩家生命值
-	private int spawnedEnemies;									//已經產生的怪物數量
+	private int level;											//��
+	private int money = 0;										//��身��
+	private int playerLife = 10;								//��身�摰嗥���
+	private int spawnedEnemies;									//撌脩�����芰����
 
 	private TileType grid[][];
-	private float roundTime, spawnDelay;						//回合時間   及   每波怪物的出生延遲時間
+	private TileType record[][]= new TileType[GRIDX][GRIDY];
+	private float roundTime, spawnDelay;						//������   ���   瘥郭�芰����辣�����
 
-	private List<Enemy> enemies;								//ArrayList用於紀錄怪物
-	private List<Integer> enemiesToBeSpawned;					//ArrayList用於儲存每波要生的怪物數量
-	private List<Tower> deployedTowers;							//ArrayList用於紀錄已經建好的塔資訊
-	private List<Projectile> projectiles;						//ArrayList用於紀錄塔射出的物件資訊
+	private List<Enemy> enemies;								//ArrayList��蝝����芰
+	private List<Integer> enemiesToBeSpawned;					//ArrayList���摮�郭閬���芰����
+	private List<Tower> deployedTowers;							//ArrayList��蝝���歇蝬遣憟賜�����
+	private List<Projectile> projectiles;						//ArrayList��蝝�������隞嗉���
 
-	private boolean roundHasStarted;							//用於確認回合是否已經開始
+	private boolean roundHasStarted;							//��蝣箄����撌脩����
 
-	public static GameState getInstance() {						//回傳當前遊戲狀況
+	public static GameState getInstance() {						//��������瘜�
 		if (instance == null)
 			instance = new GameState();
 		return instance;
@@ -53,110 +54,111 @@ public class GameState {										//此Class用於管理當前遊戲當前整體
 	/**
 	 * Game state cannot be instantiated outside of the class. To get a reference to this object, call the static method getInstance().
 	 */
-	//遊戲當前狀況無法透過GameState以外的Class更改  當需要取得當前遊戲狀況時 透過呼叫GameState會回傳Instance僅供讀取
+	//������瘜瘜��ameState隞亙��lass��  ���閬�������瘜�� ���GameState���Instance�������
 	private GameState() {
 		instance = this;
 		createMap();
 	}
 
-	private void createMap() {								//產生地圖
+	private void createMap() {								//������
 		grid = new TileType[GRIDX][GRIDY];
 		for (int i = 0; i < GRIDX; i++) {
 			for (int j = 0; j < GRIDY; j++) {
 				grid[i][j] = TileType.Used;
+				record[i][j] = TileType.Used;
 			}
 		}
 	}
 
-	public void initialize() {								//將遊戲狀態初始化
-		newRoundInitialization();							//將回合資訊初始化
-		level = 1;											//將關卡重新設定至第一關
-		currentLevel = Level.generateLevel(level);			//當前關卡設定為 第一關 並且產生第一關的地圖等 相關資訊
-		money = 1000;										//最初金錢為1000
-		playerLife = 10;									//最初玩家生命值為10點
-		roundTime = PRE_ROUND_WAIT_DURATION;				//回合持續時間 設定為 每回合間等待時間 時間一到結束該回合
-		deployedTowers = new ArrayList<Tower>();			//將所有塔狀態 初始化為 沒有建立任何塔的狀態
+	public void initialize() {								//撠���������
+		newRoundInitialization();							//撠��������
+		level = 1;											//撠���閮剖�蝚砌����
+		currentLevel = Level.generateLevel(level);			//����閮剖� 蝚砌���� 銝虫���洵銝�������� ������
+		money = 1000;										//������1000
+		playerLife = 10;									//����摰嗥��潛10暺�
+		roundTime = PRE_ROUND_WAIT_DURATION;				//�������� 閮剖� 瘥�������� �����蝯�府����
+		deployedTowers = new ArrayList<Tower>();			//撠�������� ���� 瘝�遣蝡遙雿������
 		
 	}
 	
-	public void newRoundInitialization(){					//用於將回合資訊初始化
-		spawnDelay = 0;										//同一波敵人中 每一隻敵人產生的間隔時間
-		spawnedEnemies = 0;									//已經產生的怪物為 0隻
-		enemiesToBeSpawned = new ArrayList<Integer>();		//用於讀取每波必須要產生的怪物總數量
-		enemies = new ArrayList<Enemy>();					//用於紀錄當前已經產生的怪物資訊
-		projectiles = new ArrayList<Projectile>();			//用於記錄當前已經產生的投擲物資訊
+	public void newRoundInitialization(){					//��撠��������
+		spawnDelay = 0;										//���瘜Ｘ鈭箔葉 瘥���鈭箇��������
+		spawnedEnemies = 0;									//撌脩�����芰� 0�
+		enemiesToBeSpawned = new ArrayList<Integer>();		//��霈����郭敹������芰蝮賣���
+		enemies = new ArrayList<Enemy>();					//��蝝�����歇蝬����芰鞈��
+		projectiles = new ArrayList<Projectile>();			//��閮���歇蝬�����鞈��
 		
 	}
 	
-	public void update(float delta) {						//用於更新當前遊戲狀態
+	public void update(float delta) {						//�������������
 		updateRoundTimer(delta);
 
-		if (roundHasStarted) {								//若回合為開始的狀態
-			checkForEnemySpawn(delta);						//檢查是否要出怪
+		if (roundHasStarted) {								//������������
+			checkForEnemySpawn(delta);						//瑼Ｘ��閬��
 
-			for (Enemy enemy : enemies)						//更新每一隻已經產生的怪物資訊
+			for (Enemy enemy : enemies)						//��瘥��撌脩�����芰鞈��
 				enemy.update(delta);
 
-			for (Tower tower : deployedTowers)				//更新每一座蓋好的塔的資訊
+			for (Tower tower : deployedTowers)				//��瘥�摨扯�末�������
 				tower.update(delta);
 			
-			for(Projectile projectile : projectiles)		//更新每一個塔的投擲物的資訊
+			for(Projectile projectile : projectiles)		//��瘥�����������
 				projectile.update(delta);
 			
 		}
 		
 	}
 
-	private void updateRoundTimer(float delta) {			//用於更新遊戲狀況
-		if (roundTime > 0) {								//若該回合還有剩餘遊戲時間
-			roundTime -= delta;								//繼續保持下去 不進行任何動作
+	private void updateRoundTimer(float delta) {			//��������瘜�
+		if (roundTime > 0) {								//�閰脣����擗�����
+			roundTime -= delta;								//蝜潛���� 銝�脰�遙雿���
 		}
-		else {												//若該回合已經沒有剩餘時間 即可以結束
-			roundHasStarted = true;							//剛才有進行遊戲回合
-			roundTime = ROUND_DURATION;						//重新設定roundTime 給予新的一輪遊戲時間
+		else {												//�閰脣��歇蝬��擗��� ��隞亦���
+			roundHasStarted = true;							//�����脰������
+			roundTime = ROUND_DURATION;						//��閮剖�oundTime 蝯虫����頛芷�����
 			
-			prepareLevel(level++);							//準備下一關
-			spawnedEnemies = 0;								//將已經產生的怪物數量歸零
+			prepareLevel(level++);							//皞������
+			spawnedEnemies = 0;								//撠歇蝬����芰���飛�
 		}
 	}
 
 	public void render(SpriteBatch spriteBatch) {			//
-		displayMap(spriteBatch);							//用於顯示地圖
-		displayEnemies(spriteBatch);						//用於顯示敵人
-		displayTowers(spriteBatch); 						//用於顯示塔
-		displayProjectiles(spriteBatch);					//用於顯示投擲物
+		displayMap(spriteBatch);							//��憿舐內����
+		displayEnemies(spriteBatch);						//��憿舐內�鈭�
+		displayTowers(spriteBatch); 						//��憿舐內憛�
+		displayProjectiles(spriteBatch);					//��憿舐內���
 	}
 	
-	private void displayProjectiles(SpriteBatch spriteBatch) {		//用於顯示投擲物
+	private void displayProjectiles(SpriteBatch spriteBatch) {		//��憿舐內���
 		spriteBatch.begin();
-		for(Projectile projectile : projectiles){					//每一個投擲物件都run過
-			projectile.draw(spriteBatch);							//繪製出每一個投擲物件
+		for(Projectile projectile : projectiles){					//瘥����隞園run���
+			projectile.draw(spriteBatch);							//蝜芾ˊ�瘥����隞�
 		}
 		spriteBatch.end();
 		
 	}
 
-	private void displayTowers(SpriteBatch spriteBatch) {			//用於顯示塔
+	private void displayTowers(SpriteBatch spriteBatch) {			//��憿舐內憛�
 		spriteBatch.begin();
-		for(Tower tower : deployedTowers) {							//每一座塔都run過
-			tower.draw(spriteBatch);								//繪製出每一座塔
+		for(Tower tower : deployedTowers) {							//瘥�摨批�run���
+			tower.draw(spriteBatch);								//蝜芾ˊ�瘥�摨批��
 		}
 		
 		spriteBatch.end();
 	}
 
-	private void displayEnemies(SpriteBatch spriteBatch){			//用於顯示怪物
+	private void displayEnemies(SpriteBatch spriteBatch){			//��憿舐內�芰
 		spriteBatch.begin();
-		for(Enemy enemy : enemies){									//每一個敵人都run過
-			enemy.draw(spriteBatch);								//繪製出每一個怪物
+		for(Enemy enemy : enemies){									//瘥��鈭粹run���
+			enemy.draw(spriteBatch);								//蝜芾ˊ�瘥���芰
 		}
 		
 		spriteBatch.end();
 	}
 
-	private void displayMap(SpriteBatch spriteBatch) {				//用於繪製地圖
+	private void displayMap(SpriteBatch spriteBatch) {				//��蝜芾ˊ����
 		spriteBatch.begin();
-		for (int i = 0; i < grid.length; i++) {						//繪製出整個地圖
+		for (int i = 0; i < grid.length; i++) {						//蝜芾ˊ������
 			for (int j = 0; j < grid[i].length; j++) {
 				TileType type = grid[i][j];
 
@@ -169,7 +171,7 @@ public class GameState {										//此Class用於管理當前遊戲當前整體
 		spriteBatch.end();
 	}
 
-	public boolean checkProjectileCollision() {//用於檢查投擲物是否與怪物產生碰撞
+	public boolean checkProjectileCollision() {//��瑼Ｘ��������芰���１���
 
 		return false;
 	}
@@ -179,117 +181,118 @@ public class GameState {										//此Class用於管理當前遊戲當前整體
 	 * TODO prepare enemies gets the list of enemies, instances e.g. { {1,2} , {2,1} , {1,2} } 2 spiders, 1 skeleton, 2 spiders in order
 	 */
 
-	public void checkForEnemySpawn(float delta) {		//用於檢察怪物是否需要繼續產生怪物
+	public void checkForEnemySpawn(float delta) {		//��瑼Ｗ��芰����閬匱蝥���芰
 		spawnDelay += delta;
 
-		if (spawnDelay >= .5 && spawnedEnemies < enemiesToBeSpawned.size()) {	//若當前已生成的怪物少於該波應生成的怪物總數
+		if (spawnDelay >= .5 && spawnedEnemies < enemiesToBeSpawned.size()) {	//����歇�����芰撠閰脫郭������芰蝮賣
 
-			EnemyType type = Enemy.interpretType(enemiesToBeSpawned.get(spawnedEnemies));	//取得接下來要生成的怪物類型
-			Enemy enemy = Enemy.createEnemy(type);				//利用怪物類型產生對應的怪物
-			enemies.add(enemy);									//將新增的怪物加入ArrayList中
+			EnemyType type = Enemy.interpretType(enemiesToBeSpawned.get(spawnedEnemies));	//���銝������芰憿��
+			Enemy enemy = Enemy.createEnemy(type);				//���芰憿�������芰
+			enemies.add(enemy);									//撠憓��芰��ArrayList銝�
 			spawnDelay = 0;										
-			++spawnedEnemies;									//已生成的怪物數量+1
+			++spawnedEnemies;									//撌脩����芰����+1
 		}
 	}
 
 	/**
 	 * This should be called after every round.
-	 * �C�@�Ӧ^�X����
+	 * 嚙瘠嚙瑾嚙諉回嚙碼嚙踝蕭嚙踝蕭
 	 */
-	public void prepareLevel(int lvl) {												//用於準備關卡
-		newRoundInitialization();													//先對新關卡進行初始化的動作
-		currentLevel = Level.generateLevel(lvl);									//當前關卡 設定為新產生的關卡
-		if((enemiesToBeSpawned = currentLevel.getEnemiesToBeSpawned()) == null){	//若當前關卡要出的怪物數量為NULL
-			prepareLevel(lvl++);													//準備下一關
-		}else enemiesToBeSpawned = currentLevel.getEnemiesToBeSpawned();			//取得目前關卡要出的怪物數量
+	public void prepareLevel(int lvl) {												//��皞��
+		newRoundInitialization();													//������脰��������
+		currentLevel = Level.generateLevel(lvl);									//���� 閮剖�������
+		if((enemiesToBeSpawned = currentLevel.getEnemiesToBeSpawned()) == null){	//�����閬���芰���NULL
+			prepareLevel(lvl++);													//皞������
+		}else enemiesToBeSpawned = currentLevel.getEnemiesToBeSpawned();			//������閬���芰����
 		
 	}
 
 
-	public void deployTower(Tower tower) {						//用於建立新的塔
-		if (canBuyTower(tower)) {								//若玩家可以購買新的塔
-			money -= tower.getCost();							//扣除玩家金錢
-			deployedTowers.add(tower);							//蓋好新的塔 並將其加入arraylist中
+	public void deployTower(Tower tower) {						//��撱箇�����
+		if (canBuyTower(tower)) {								//��摰嗅隞亥頃鞎瑟����
+			money -= tower.getCost();							//���摰園�
+			deployedTowers.add(tower);							//��末����� 銝血���arraylist銝�
 		}
 	}
 
-	public boolean canBuyTower(Tower tower) {					//用於確認玩家是否買得起新的塔
+	public boolean canBuyTower(Tower tower) {					//��蝣箄�摰嗆�鞎瑕�絲�����
 		return money >= tower.getCost();
 	}
 
-	//�]�w�@�i�X��ͥX
-	public void setWaveSpawnTime(float waveSpawnTime) {			//設定每波怪物出生時間
-		if (waveSpawnTime < 0)									//若傳入非法參數
-			this.roundTime = 5;									//則預設為5秒
-		else													//若傳入合法參數
-			this.roundTime = waveSpawnTime;						//則設定為傳入的參數
+	//嚙稽嚙緩嚙瑾嚙箠嚙碼嚙踝蕭穸X
+	public void setWaveSpawnTime(float waveSpawnTime) {			//閮剖��郭�芰������
+		if (waveSpawnTime < 0)									//�������
+			this.roundTime = 5;									//���身�5蝘�
+		else													//�������
+			this.roundTime = waveSpawnTime;						//��身摰�����
 	}
 
-	//����
-	public void getDamaged() {									//當怪物抵達終點 對玩家造成傷害
-		playerLife--;											//扣除一點生命值
+	//嚙踝蕭嚙踝蕭
+	public void getDamaged() {									//��芰������ 撠摰園��摰�
+		playerLife--;											//��銝�暺���
 	}
 	
-	public List<Projectile> getProjectiles(){					//用於取得投擲物件列表
+	public List<Projectile> getProjectiles(){					//�������隞嗅�”
 		return projectiles;
 	}
 
-	public Level getCurrentLevel() {							//取得當前關卡資訊
+	public Level getCurrentLevel() {							//������鞈��
 		return currentLevel;
 	}
 
-	public int getPlayerLife() {								//取得玩家剩餘生命值
+	public int getPlayerLife() {								//���摰嗅擗���
 		return playerLife;
 	}
 
-	public List<Enemy> getEnemies() {							//取得敵人資訊列表
+	public List<Enemy> getEnemies() {							//���鈭箄���”
 		return enemies;
 	}
 	
-	public float getRoundTime() {								//取得回合時間
+	public float getRoundTime() {								//��������
 		return roundTime;
 	}
 	
-	public int getMoney() {										//取得玩家金錢資訊
+	public int getMoney() {										//���摰園�鞈��
 		return money;
 	}
 	
-	public void addMoney(int bounty){							//增加玩家金錢
+	public void addMoney(int bounty){							//憓�摰園�
 		this.money += bounty;
 	}
 
-	public List<Tower> getDeployedTowers() {					//取得已經建立的塔 列表
+	public List<Tower> getDeployedTowers() {					//���歇蝬遣蝡��� ��”
 		return deployedTowers;
 	}
 	
-	public List<Point> getWaypoints(){							//取得當前地圖可以走的路徑點列表
+	public List<Point> getWaypoints(){							//�������隞亥粥��楝敺��”
 		return Map.getInstance().getWaypoints(mapType);
 	}
 	
-	public void setMap(int type){								//產生編號type的地圖
+	public void setMap(int type){								//���楊��ype�����
 		mapType = type;
 		this.grid = Map.generateMap(type);
 		
 	}
 	
 
-	public boolean isTowerPlaceable(Point point) {				//用於確認該目標點是否可以建造塔
+	public boolean isTowerPlaceable(Point point) {				//��蝣箄�府�璅���隞亙遣���
 		try {
-			return point.x > 0 && point.y > 0 &&  ( (grid[point.x / 40][point.y / 40] == TileType.floor_yellow) || (grid[point.x / 40][point.y / 40] == TileType.glass_special)) ;	//座標合法 且 該座標並非怪物行走路徑		
+			return point.x > 0 && point.y > 0 &&  ( (grid[point.x / 40][point.y / 40] == TileType.floor_yellow) || (grid[point.x / 40][point.y / 40] == TileType.glass_special))&&record[point.x / 40][point.y / 40] != TileType.floor_yellow ;	//摨扳���� 銝� 閰脣漣璅蒂���芰銵粥頝臬��		
 		}catch (Exception e){
 			
 		}
 		return false;
 	}
 
-	public void buildTower(Tower towerToBuild, Point point) {	//給定欲建構的塔資訊  以及塔的建構座標
-		// grid[point.x / 40][point.y / 40] = TileType.Used;
+	public void buildTower(Tower towerToBuild, Point point) {	//蝯血�炬撱箸������  隞亙���遣瑽漣璅�
+		 
 
-		Vector2 position = MathHelper.PointToVector2(point);	//取得塔的建構位置
-		towerToBuild.setPosition(position);						//設定塔的建構位置
+		Vector2 position = MathHelper.PointToVector2(point);	//�����遣瑽�蔭
+		towerToBuild.setPosition(position);						//閮剖���遣瑽�蔭
 
 		towerToBuild.setCenter((float) point.x + Config.tileSize / 2, (float) point.y + Config.tileSize / 2);
 		towerToBuild.getPosition().set(MathHelper.PointToVector2(point));
-		deployTower(towerToBuild);								//建構該塔
+		deployTower(towerToBuild);								//撱箸�府憛�
+		record[point.x / 40][point.y / 40] = TileType.floor_yellow;
 	}
 }

@@ -19,7 +19,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 	}
 
 	public enum EnemyType {							//Enemy種類  目前只有蜘蛛   骷髏   *可增加*
-		Spider, Skeleton
+		Spider, Skeleton,cursor
 	}
 
 	protected float angle;
@@ -73,6 +73,12 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 			moneyReward = 8;
 			speed = 1;
 			enemy = new Skeleton(sprite, health, moneyReward, speed, waypointList);
+			return enemy;
+		case cursor:				//怪物為  蜘蛛
+			health = 700;
+			moneyReward = 12;
+			speed = 1.2f;
+			enemy = new Spider(sprite, health, moneyReward, speed, waypointList);
 			return enemy;
 			
 		default:					//非 預設的怪物 回傳enemy型態  *可能另有她用*
@@ -258,6 +264,8 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 				return EnemyType.Spider;
 			case 1:
 				return EnemyType.Skeleton;
+			case 2:
+				return EnemyType.cursor;
 			default:
 				return EnemyType.Spider;
 		}

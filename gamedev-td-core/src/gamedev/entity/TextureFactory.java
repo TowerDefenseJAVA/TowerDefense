@@ -5,7 +5,7 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
-public class TextureFactory {				//用於讀取對應的圖檔
+public class TextureFactory {				//��霈���������
 	
 	private static HashMap<String, Texture> textures = new HashMap<String, Texture>();
 	private static HashMap<String, Texture> projectiles = new HashMap<String, Texture>();
@@ -20,6 +20,9 @@ public class TextureFactory {				//用於讀取對應的圖檔
 			}
 			else if(key.equals("grass")){
 				path = "assets/img/grass.png";
+			}
+			else if(key.equals("cursor")){
+				path = "assets/img/cursor.png";
 			}
 			else if(key.equals("dirt")){
 				path = "assets/img/dirt_light.png";
