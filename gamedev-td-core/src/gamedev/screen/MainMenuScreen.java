@@ -117,7 +117,7 @@ public class MainMenuScreen extends GDScreen {
 		background.setPosition(0, 0);
 		
 		title = spriteManager.getSprite("title");
-		title.setPosition(0, 100);
+		title.setPosition(0, -125);
 	}
 		
 	public List<GDSprite> getButtons() {
