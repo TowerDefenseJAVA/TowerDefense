@@ -25,7 +25,7 @@ public class TextureFactory {
 				path = "assets/img/grass.png";
 			}
 			else if(key.equals("tank")){
-				path = "assets/img/heart.png";
+				path = "assets/img/tank.png";
 			}
 			else if(key.equals("dirt")){
 				path = "assets/img/dirt_light.png";
