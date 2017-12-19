@@ -5,8 +5,11 @@ import java.util.HashMap;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
-public class TextureFactory {				//��霈���������
-	
+
+		
+
+public class TextureFactory {				
+
 	private static HashMap<String, Texture> textures = new HashMap<String, Texture>();
 	private static HashMap<String, Texture> projectiles = new HashMap<String, Texture>();
 	
@@ -185,6 +188,21 @@ public class TextureFactory {				//��霈������
 			}
 			else if(key.equals("wood_tower")) {
 				path = "assets/img/wood_tower.png";
+			}
+			else if(key.equals("about1")) {
+				path = "assets/img/about1.png";
+			}
+			else if(key.equals("about2")) {
+				path = "assets/img/about2.png";
+			}
+			else if(key.equals("about3")) {
+				path = "assets/img/about3.png";
+			}
+			else if(key.equals("button_next")) {
+				path = "assets/img/button_next.png";
+			}
+			else if(key.equals("button_pre")) {
+				path = "assets/img/button_pre.png";
 			}
 			
 			

@@ -18,12 +18,14 @@ import gamedev.td.TowerDefense;
 
 public class AboutScreen extends GDScreen{
 
+	public static final int MAIN_MENU = 0, NEXT_PAGE = 1, PRE_PAGE = 2;
 	OrthographicCamera camera;
 	SpriteBatch spriteBatch;
 	BitmapFont font;
 	private List<GDSprite> buttons;
+	private static int currentbg=1;
 	
-	GDSprite background,menuBtn;
+	static GDSprite background,menuBtn,nextBtn,preBtn;
 	
 	public AboutScreen(TowerDefense towerDefense) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -43,13 +45,19 @@ public class AboutScreen extends GDScreen{
 	private void initializeButtons() {
 		buttons = new ArrayList<GDSprite>();
 		SpriteManager spriteManager = SpriteManager.getInstance();
-		background = spriteManager.getSprite("lvlselectbg");
+		background = spriteManager.getSprite("about1");
 		background.setPosition(0, 0);
 		
 		//給回到主頁面的按鈕位置
 		menuBtn = spriteManager.getSprite("back_to_menu_button");
-		menuBtn.setPosition(160,520);
+		menuBtn.setPosition(150,600);
 		buttons.add(menuBtn);
+		nextBtn = spriteManager.getSprite("button_next");
+		nextBtn.setPosition(600,600);
+		buttons.add(nextBtn);
+		preBtn = spriteManager.getSprite("button_pre");
+		preBtn.setPosition(0,600);
+		buttons.add(preBtn);
 	}
 	
 	private void initializeFont() {
@@ -77,6 +85,19 @@ public class AboutScreen extends GDScreen{
 				button.draw(spriteBatch);
 			}
 		spriteBatch.end();
+	}
+	
+	public static void changebg(int num) {
+		SpriteManager spriteManager = SpriteManager.getInstance();
+		if(currentbg+num<1||currentbg+num>3) {
+			return;
+		}
+		currentbg=currentbg+num;
+		String nextbg = String.valueOf(currentbg);
+		//System.out.printf(nextbg);
+		background = spriteManager.getSprite("about"+nextbg);
+		background.setPosition(0, 0);
+		return;
 	}
 
 	@Override

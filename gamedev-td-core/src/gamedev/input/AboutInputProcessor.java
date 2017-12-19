@@ -14,7 +14,7 @@ public class AboutInputProcessor extends GDInputProcessor{
 	
 
 	List<GDSprite> buttons;
-	private AboutScreen aboutScreen;//«Å§i¤@­Ó³]©wAbout¿Ã¹õªºª«¥ó
+	private AboutScreen aboutScreen;//å®£å‘Šä¸€å€‹è¨­å®šAboutè¢å¹•çš„ç‰©ä»¶
 
 	public AboutInputProcessor(TowerDefense towerDefense, AboutScreen screen){
 		super(towerDefense);
@@ -41,7 +41,7 @@ public class AboutInputProcessor extends GDInputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// Ä²À»¨ì©I¥sªº¨ç¦¡
+		// è§¸æ“Šåˆ°å‘¼å«çš„å‡½å¼
 		
 		buttons = aboutScreen.getButtons();
 		for (int i = 0; i < buttons.size(); i++) {
@@ -50,10 +50,15 @@ public class AboutInputProcessor extends GDInputProcessor{
 			if(Gdx.input.isButtonPressed(Buttons.LEFT))
 				if(sprite.contains(screenX, screenY)) {
 					switch(i) {
-					case SettingScreen.MAIN_MENU:
+					case AboutScreen.NEXT_PAGE:
+						AboutScreen.changebg(1);
+						break;
+					case AboutScreen.MAIN_MENU:
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
 						break;
-
+					case AboutScreen.PRE_PAGE:
+						AboutScreen.changebg(-1);
+						break;
 					}
 				}
 		}
