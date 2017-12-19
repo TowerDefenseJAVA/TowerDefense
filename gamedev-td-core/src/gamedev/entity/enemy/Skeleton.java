@@ -17,7 +17,7 @@ public class Skeleton extends Enemy {
 		sprite.setSize(50, 50);
 		
 	}
-	
+	@Override
 	public void draw(SpriteBatch spriteBatch){
 		if(active){
 			int offset = directionToInt(angle);
@@ -51,10 +51,7 @@ public class Skeleton extends Enemy {
 				return 132;
 			else if(angle == 270)
 				return 0;
-			
 			return 384;
-					
-
 	}
 
 }
