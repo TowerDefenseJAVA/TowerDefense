@@ -24,8 +24,9 @@ public class SettingScreen extends GDScreen{
 	SpriteBatch spriteBatch;
 	BitmapFont font;
 	private List<GDSprite> buttons;
-	public final static int MAIN_MENU = 0;
-	GDSprite background,menuBtn;
+	public final static int MAIN_MENU = 0,Level_easy=1,Level_normal=2,Level_hard=3;
+	GDSprite background,menuBtn,easyBtn,normalBtn,hardBtn;
+
 	
 	public SettingScreen(TowerDefense towerDefense) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -37,7 +38,6 @@ public class SettingScreen extends GDScreen{
 		initializeFont();
 		initializeButtons();
 		this.inputProcessor = new SettingInputProcessor(towerDefense, this);
-		//«Ø¤@­ÓSettingInputProcessorªºª«¥ó
 	}	
 	
 	
@@ -47,9 +47,22 @@ public class SettingScreen extends GDScreen{
 		background = spriteManager.getSprite("lvlselectbg");
 		background.setPosition(0, 0);
 		
+		easyBtn = spriteManager.getSprite("back_to_menu_button"); // åœ–æª”
+		easyBtn.setPosition(160,360);	// ä½ç½®
+		
+		normalBtn = spriteManager.getSprite("back_to_menu_button"); // åœ–æª”
+		normalBtn.setPosition(160,400);	// ä½ç½®
+		
+		hardBtn = spriteManager.getSprite("back_to_menu_button"); // åœ–æª”
+		hardBtn.setPosition(160,440);	// ä½ç½®
+		
 		menuBtn = spriteManager.getSprite("back_to_menu_button");
 		menuBtn.setPosition(160,520);
-		buttons.add(menuBtn);
+		
+		buttons.add(menuBtn);	// switch(0)
+		buttons.add(easyBtn);	// switch(1)
+		buttons.add(normalBtn);	// switch(2)
+		buttons.add(hardBtn);	// switch(3)
 	}
 	
 	private void initializeFont() {
@@ -68,7 +81,7 @@ public class SettingScreen extends GDScreen{
 
 	@Override
 	public void render(float delta) {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO ï¿½Û°Ê²ï¿½ï¿½Íªï¿½ï¿½ï¿½k Stub
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT |
 				(Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
@@ -84,37 +97,37 @@ public class SettingScreen extends GDScreen{
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO ï¿½Û°Ê²ï¿½ï¿½Íªï¿½ï¿½ï¿½k Stub
 		
 	}
 
 	@Override
 	public void show() {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO ï¿½Û°Ê²ï¿½ï¿½Íªï¿½ï¿½ï¿½k Stub
 		
 	}
 
 	@Override
 	public void hide() {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO ï¿½Û°Ê²ï¿½ï¿½Íªï¿½ï¿½ï¿½k Stub
 		
 	}
 
 	@Override
 	public void pause() {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO ï¿½Û°Ê²ï¿½ï¿½Íªï¿½ï¿½ï¿½k Stub
 		
 	}
 
 	@Override
 	public void resume() {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO ï¿½Û°Ê²ï¿½ï¿½Íªï¿½ï¿½ï¿½k Stub
 		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO ¦Û°Ê²£¥Íªº¤èªk Stub
+		// TODO ï¿½Û°Ê²ï¿½ï¿½Íªï¿½ï¿½ï¿½k Stub
 		
 	}
 

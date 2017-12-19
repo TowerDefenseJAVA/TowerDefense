@@ -19,7 +19,8 @@ public class SettingInputProcessor extends GDInputProcessor{
 	
 
 	List<GDSprite> buttons;
-	private SettingScreen settingScreen;//宣告一個設定螢幕的物件
+	private SettingScreen settingScreen;
+	private float Level_Mode = 1;
 
 	public SettingInputProcessor(TowerDefense towerDefense, SettingScreen screen){
 		super(towerDefense);
@@ -46,7 +47,7 @@ public class SettingInputProcessor extends GDInputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// 觸擊到的函式
+		// 觸嚙踝蕭嚙趣的嚙賜式
 		
 		buttons = settingScreen.getButtons();
 		for (int i = 0; i < buttons.size(); i++) {
@@ -58,12 +59,32 @@ public class SettingInputProcessor extends GDInputProcessor{
 					case SettingScreen.MAIN_MENU:
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
 						break;
+					
+					case SettingScreen.Level_easy:
+						System.out.println("easy mode");
+						Level_Mode = 0.5F;
+						break;
+					
+					case SettingScreen.Level_normal:
+						System.out.println("normal mode");
+						Level_Mode = 1F;
+						break;
+						
+					case SettingScreen.Level_hard:
+						System.out.println("hard mode");
+						Level_Mode = 1.5F;
+						break;
 
 					}
 				}
 		}
 		
 		return false;
+	}
+	
+	public float ReturnLevel()
+	{
+		return Level_Mode;
 	}
 
 	@Override
