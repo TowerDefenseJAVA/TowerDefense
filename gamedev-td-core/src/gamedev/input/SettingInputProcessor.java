@@ -20,7 +20,6 @@ public class SettingInputProcessor extends GDInputProcessor{
 
 	List<GDSprite> buttons;
 	private SettingScreen settingScreen;
-	private float Level_Mode = 1;
 
 	public SettingInputProcessor(TowerDefense towerDefense, SettingScreen screen){
 		super(towerDefense);
@@ -62,17 +61,17 @@ public class SettingInputProcessor extends GDInputProcessor{
 					
 					case SettingScreen.Level_easy:
 						System.out.println("easy mode");
-						Level_Mode = 0.5F;
+						GameState.getInstance().setLevel_Mode(1);
 						break;
 					
 					case SettingScreen.Level_normal:
 						System.out.println("normal mode");
-						Level_Mode = 1F;
+						GameState.getInstance().setLevel_Mode(2);
 						break;
 						
 					case SettingScreen.Level_hard:
 						System.out.println("hard mode");
-						Level_Mode = 1.5F;
+						GameState.getInstance().setLevel_Mode(4);
 						break;
 
 					}
@@ -82,11 +81,7 @@ public class SettingInputProcessor extends GDInputProcessor{
 		return false;
 	}
 	
-	public float ReturnLevel()
-	{
-		return Level_Mode;
-	}
-
+	
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 		// TODO Auto-generated method stub
