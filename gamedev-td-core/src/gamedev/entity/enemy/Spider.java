@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class Spider extends Enemy {
 
-	private int condition =0;
+	private int condition;
 	public Spider(GDSprite sprite, int health, int moneyReward, float speed, List<Point> waypoints) {
 		super(sprite, health, moneyReward, speed, waypoints);
 		sprite.setSize(50,50);
@@ -21,10 +21,6 @@ public class Spider extends Enemy {
 	@Override
 	public void draw(SpriteBatch spriteBatch) {
 		if(active) {
-			int offset = conditionToInt(condition);
-			sprite.setRegion(0,offset,44,44);
-			sprite.setX(this.position.x);
-			sprite.setY(this.position.y);
 			if(icedAilmentTimer > 0){
 				condition = 1;
 			}else if(burnedAilmentTimer > 0) {
@@ -35,6 +31,11 @@ public class Spider extends Enemy {
 			else{
 				condition = 0;
 			}
+			int offset = conditionToInt(condition);
+			sprite.setRegion(0,offset,44,44);
+			sprite.setX(this.position.x);
+			sprite.setY(this.position.y);
+			
 			sprite.setFlip(false, true);
 			sprite.draw(spriteBatch);
 		}
