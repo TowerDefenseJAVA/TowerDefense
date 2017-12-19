@@ -46,7 +46,7 @@ public class TowerInformation {
 		
 		Texture tex = new Texture(Gdx.files.internal("assets/img/info_bg.png"));
 		background = new Sprite(tex);
-//		background.setSize(250, 80);
+		//background.setSize(400, 400);
 		background.setPosition(300, y);
 		background.flip(false, true);
 		
