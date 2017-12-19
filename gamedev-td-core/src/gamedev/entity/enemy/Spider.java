@@ -10,7 +10,7 @@ public class Spider extends Enemy {
 
 	public Spider(GDSprite sprite, int health, int moneyReward, float speed, List<Point> waypoints) {
 		super(sprite, health, moneyReward, speed, waypoints);
-		
+		sprite 
 		
 		
 	}
