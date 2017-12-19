@@ -22,7 +22,7 @@ public class Spider extends Enemy {
 	public void draw(SpriteBatch spriteBatch) {
 		if(active) {
 			int offset = conditionToInt(condition);
-			sprite.setRegion(offset,offset,64,64);
+			sprite.setRegion(0,offset,44,44);
 			sprite.setX(this.position.x);
 			sprite.setY(this.position.y);
 			if(icedAilmentTimer > 0){
@@ -45,20 +45,6 @@ public class Spider extends Enemy {
 			super.update(delta);
 		}
 	}
-	
-	private int directionToInt(float angle) {
-		if(angle == 0) {
-			return 384;
-		}else if(angle == 90) {
-			return 262;
-		}else if(angle == 180) {
-			return 132;
-		}else if(angle == 270) {
-			return 0;
-		}
-		return 384;
-	}
-
 	private int conditionToInt(int condition) {
 		if(condition == 0) {
 			return 88;
@@ -66,6 +52,8 @@ public class Spider extends Enemy {
 			return 44;
 		}else if(condition == 2) {
 			return 0;
+		}else if(condition == 3) {
+			return 132;
 		}
 		return 88;
 	}

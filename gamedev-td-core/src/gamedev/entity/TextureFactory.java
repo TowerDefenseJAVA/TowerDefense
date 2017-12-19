@@ -19,7 +19,7 @@ public class TextureFactory {
 		Texture texture = (Texture)textures.get(key);
 		if(texture == null){
 			if(key.equals("spider")){
-				path = "assets/img/spider.png";
+				path = "assets/img/babyrage.png";
 			}
 			else if(key.equals("grass")){
 				path = "assets/img/grass.png";
