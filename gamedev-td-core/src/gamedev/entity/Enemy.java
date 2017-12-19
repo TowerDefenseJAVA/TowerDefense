@@ -123,7 +123,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 				dir = Dir.DOWN;
 
 			if (dir == Dir.LEFT) {										//往左邊走
-				angle = 0;											//移動角度為 180度
+				angle = 180;											//移動角度為 180度
 				position.x -= actualSpeed;								//當前位置 X 座標 往左邊 移動 ActualSpeed個單位
 				if (position.x <= waypoint.x)							//若超出目標點的 X 座標 則強制修正回目標點的 X 座標
 					position.x = waypoint.x;
@@ -133,12 +133,12 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 				if (position.x >= waypoint.x)							//若超出目標點的X座標 則強制修正回目標點的X座標
 					position.x = waypoint.x;							
 			} else if (dir == Dir.UP) {									//往下面走
-				angle = 0;											//移動角度為270度
+				angle = 270;											//移動角度為270度
 				position.y -= actualSpeed;								//當前位置Y 座標 往下方移動 ActualSpeed個單位
 				if (position.y <= waypoint.y)							//若超出目標點的Y座標 則強制修正回目標點的Y座標
 					position.y = waypoint.y;
 			} else if (dir == Dir.DOWN) {								//往上面走
-				angle = 0;												//移動角度為90度
+				angle = 90;												//移動角度為90度
 				position.y += actualSpeed;								//當前位置Y座標 往上方移動ActualSpeed個單位
 				if (position.y >= waypoint.y)							//若超出目標點的Y座標 則強制修正回目標點的Y座標
 					position.y = waypoint.y;
