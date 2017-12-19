@@ -28,7 +28,8 @@ public class GameState {										//甇七lass��蝞∠����
 
 	private Level currentLevel;									//��摮�����
 	private int mapType;										//��摮���蝚砍嗾撘萄���
-
+	
+	private int Level_Mode=1;
 	private int level;											//��
 	private int money = 0;										//��身��
 	private int playerLife = 10;								//��身�摰嗥���
@@ -273,7 +274,15 @@ public class GameState {										//甇七lass��蝞∠����
 		this.grid = Map.generateMap(type);
 		
 	}
+	public void setLevel_Mode(int setLevel)
+	{
+		Level_Mode = setLevel;
+	}
 	
+	public int getLevel_Mode()
+	{
+		return Level_Mode;
+	}
 
 	public boolean isTowerPlaceable(Point point) {				//��蝣箄�府�璅���隞亙遣���
 		try {
