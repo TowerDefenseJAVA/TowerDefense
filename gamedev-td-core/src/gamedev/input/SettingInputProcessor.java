@@ -62,16 +62,19 @@ public class SettingInputProcessor extends GDInputProcessor{
 					case SettingScreen.Level_easy:
 						System.out.println("easy mode");
 						GameState.getInstance().setLevel_Mode(1);
+						towerDefense.switchScreen(towerDefense.getLvlSelectScreen());
 						break;
 					
 					case SettingScreen.Level_normal:
 						System.out.println("normal mode");
 						GameState.getInstance().setLevel_Mode(2);
+						towerDefense.switchScreen(towerDefense.getLvlSelectScreen());
 						break;
 						
 					case SettingScreen.Level_hard:
 						System.out.println("hard mode");
 						GameState.getInstance().setLevel_Mode(4);
+						towerDefense.switchScreen(towerDefense.getLvlSelectScreen());
 						break;
 
 					}
