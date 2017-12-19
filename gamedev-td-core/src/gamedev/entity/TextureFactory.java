@@ -204,6 +204,15 @@ public class TextureFactory {
 			else if(key.equals("button_pre")) {
 				path = "assets/img/button_pre.png";
 			}
+			else if(key.equals("button_easy")) {
+				path = "assets/img/button_easy.png";
+			}
+			else if(key.equals("button_normal")) {
+				path = "assets/img/button_normal.png";
+			}
+			else if(key.equals("button_hard")) {
+				path = "assets/img/button_hard.png";
+			}
 			
 			
 			

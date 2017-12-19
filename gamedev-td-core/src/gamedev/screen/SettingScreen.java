@@ -47,13 +47,13 @@ public class SettingScreen extends GDScreen{
 		background = spriteManager.getSprite("lvlselectbg");
 		background.setPosition(0, 0);
 		
-		easyBtn = spriteManager.getSprite("back_to_menu_button"); // 圖檔
+		easyBtn = spriteManager.getSprite("button_easy"); // 圖檔
 		easyBtn.setPosition(160,360);	// 位置
 		
-		normalBtn = spriteManager.getSprite("back_to_menu_button"); // 圖檔
+		normalBtn = spriteManager.getSprite("button_normal"); // 圖檔
 		normalBtn.setPosition(160,400);	// 位置
 		
-		hardBtn = spriteManager.getSprite("back_to_menu_button"); // 圖檔
+		hardBtn = spriteManager.getSprite("button_hard"); // 圖檔
 		hardBtn.setPosition(160,440);	// 位置
 		
 		menuBtn = spriteManager.getSprite("back_to_menu_button");
