@@ -100,7 +100,7 @@ public class GameUserInterface {
 		uiBackground.setPosition(0, userInterfaceY);
 		
 		infoBackground = spriteManager.getSprite("info_bg");
-		infoBackground.setPosition(300, userInterfaceY + 10);
+		infoBackground.setPosition(400, userInterfaceY + 10);
 
 		upgradeBtn = spriteManager.getSprite("upgrade_button");
 		upgradeBtn.setPosition(300, userInterfaceY + 120);
@@ -214,7 +214,7 @@ public class GameUserInterface {
 		towerInfoFont.setColor(Color.WHITE);
 
 		// Descriptions
-		int x = 310;
+		int x = 410;
 		if (towerToBuild != null) {
 			towerInfoFont.draw(spriteBatch, towerName, x, userInterfaceY + 15);
 			towerInfoFont.draw(spriteBatch, "Cost: " + cost, x, userInterfaceY + 32);
