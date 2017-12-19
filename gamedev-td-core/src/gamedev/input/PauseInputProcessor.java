@@ -1,5 +1,6 @@
 package gamedev.input;
 
+import gamedev.entity.GameState;
 import gamedev.screen.PauseScreen;
 import gamedev.td.GDSprite;
 import gamedev.td.TowerDefense;
@@ -56,9 +57,13 @@ public class PauseInputProcessor extends GDInputProcessor{
 						towerDefense.switchScreen(towerDefense.getGameScreen());
 						break;
 					case PauseScreen.RESTART:
+						GameState.getInstance().initialize();
+						GameState.getInstance().restart();
 						towerDefense.switchScreen(towerDefense.getGameScreen());
 						break;
 					case PauseScreen.MAIN_MENU:
+						GameState.getInstance().initialize();
+						GameState.getInstance().restart();
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
 						break;
 					case PauseScreen.EXIT:

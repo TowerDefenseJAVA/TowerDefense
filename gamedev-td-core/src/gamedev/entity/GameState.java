@@ -70,7 +70,14 @@ public class GameState {										//甇七lass��蝞∠����
 			}
 		}
 	}
-
+	public void restart()
+	{
+		for (int i = 0; i < GRIDX; i++) {
+			for (int j = 0; j < GRIDY; j++) {
+				record[i][j] = TileType.Used;
+			}
+		}
+	}
 	public void initialize() {								//撠���������
 		newRoundInitialization();							//撠��������
 		level = 1;											//撠���閮剖�蝚砌����
@@ -286,7 +293,7 @@ public class GameState {										//甇七lass��蝞∠����
 
 	public boolean isTowerPlaceable(Point point) {				//��蝣箄�府�璅���隞亙遣���
 		try {
-			return point.x > 0 && point.y > 0 &&  ( (grid[point.x / 40][point.y / 40] == TileType.floor_yellow) || (grid[point.x / 40][point.y / 40] == TileType.glass_special))&&record[point.x / 40][point.y / 40] != TileType.floor_yellow ;	//摨扳���� 銝� 閰脣漣璅蒂���芰銵粥頝臬��		
+			return point.x > 0 && point.y > 0 &&  ( (grid[point.x / 40][point.y / 40] == TileType.floor_yellow) || (grid[point.x / 40][point.y / 40] == TileType.glass_special))&& (record[point.x / 40][point.y / 40] != TileType.floor_yellow) ;	//摨扳���� 銝� 閰脣漣璅蒂���芰銵粥頝臬��		
 		}catch (Exception e){
 			
 		}
