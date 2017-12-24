@@ -15,18 +15,17 @@ public class MenuInputProcessor extends GDInputProcessor{
 
 
 	private MainMenuScreen mainMenuScreen;
-	private Music music;
 	List<GDSprite> buttons;
-
+	Music[] music=new Music[4];
 	Color red = new Color(1,0,0,.5f);
 	Color white = new Color(1,1,1,.5f);
 
 	
-	public MenuInputProcessor(TowerDefense towerDefense, MainMenuScreen screen){
+	public MenuInputProcessor(TowerDefense towerDefense, MainMenuScreen screen, Music[] musicAll){
 		super(towerDefense);
 		this.mainMenuScreen = screen;
-		music = Gdx.audio.newMusic(Gdx.files.internal("assets/menu_bg.ogg"));
-		music.play();
+		this.music=musicAll;
+		music[0].play();
 	}
 	
 		
@@ -58,15 +57,15 @@ public class MenuInputProcessor extends GDInputProcessor{
 				if(sprite.contains(screenX, screenY)) {
 					switch(i) {
 					case MainMenuScreen.START_GAME:
-						music.pause();
+						//music[0].pause();
 						towerDefense.switchScreen(towerDefense.getLvlSelectScreen());
 						break;
 					case MainMenuScreen.LEVEL_SELECT:
-						music.pause();
+						//music[0].pause();
 						towerDefense.switchScreen(towerDefense.getSettingScreen());
 						break;
 					case MainMenuScreen.ABOUT:
-						music.pause();
+						//music[0].pause();
 						towerDefense.switchScreen(towerDefense.getAboutScreen());
 						break;
 					case MainMenuScreen.EXIT:

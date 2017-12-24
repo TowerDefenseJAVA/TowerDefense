@@ -31,7 +31,7 @@ public class MainMenuScreen extends GDScreen {
 	
 	public final static int START_GAME = 0, LEVEL_SELECT = 1, ABOUT = 2, EXIT = 3; 
 	
-	public MainMenuScreen(TowerDefense towerDefense) {
+	public MainMenuScreen(TowerDefense towerDefense, Music[] musicAll) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.setToOrtho(true);
 		
@@ -42,7 +42,7 @@ public class MainMenuScreen extends GDScreen {
 		font = FontHelper.minecraftia12px;
 		
 		initializeButtons();
-		this.inputProcessor = new MenuInputProcessor(towerDefense, this);
+		this.inputProcessor = new MenuInputProcessor(towerDefense, this,musicAll);
 		
 	}
 	

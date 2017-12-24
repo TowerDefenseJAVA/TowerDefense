@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -18,18 +19,18 @@ import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
 public class LvlSelectScreen extends GDScreen{
-	//Ä~©ÓGDScreenªºµe­±
+	//ï¿½~ï¿½ï¿½GDScreenï¿½ï¿½ï¿½eï¿½ï¿½
 
 	
-	OrthographicCamera camera;//¤£À´
+	OrthographicCamera camera;//ï¿½ï¿½ï¿½ï¿½
 	SpriteBatch spriteBatch;// is given a texture and coordinates for each rectangle to be drawn.
 	BitmapFont font;//LibGdx makes use of bitmap files (pngs) to render fonts.Each glyph in the font has a corresponding TextureRegion
 	private List<GDSprite> buttons;
 	public final static int MAP1 = 1, MAP2 = 2, MAP3 = 3, MAIN_MENU = 0;
-	GDSprite menuBtn, map1Btn, map2Btn, map3Btn, background;//«Å§iGDSprite(Ä²µo¹Ï§Îª«¥ó)ªºª«¥ó
+	GDSprite menuBtn, map1Btn, map2Btn, map3Btn, background;//ï¿½Å§iGDSprite(Ä²ï¿½oï¿½Ï§Îªï¿½ï¿½ï¿½)ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	
-	//«Øºc¤l
-	public LvlSelectScreen(TowerDefense towerDefense) {
+	//ï¿½Øºcï¿½l
+	public LvlSelectScreen(TowerDefense towerDefense ,Music musicAll[]) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.setToOrtho(true);
 		
@@ -37,10 +38,10 @@ public class LvlSelectScreen extends GDScreen{
 		
 		spriteBatch.setProjectionMatrix(camera.combined);
 		
-		initializeFont();//ªì©l¤Æ
-		initializeButtons();//ªì©l¤Æ«ö¶sª«¥ó
-		this.inputProcessor = new LvlSelectInputProcessor(towerDefense, this);
-		//¿ï¾Ü­¶­±ªº­I«á¿ï¾Ü³B²z
+		initializeFont();//ï¿½ï¿½lï¿½ï¿½
+		initializeButtons();//ï¿½ï¿½lï¿½Æ«ï¿½ï¿½sï¿½ï¿½ï¿½ï¿½
+		this.inputProcessor = new LvlSelectInputProcessor(towerDefense, this, musicAll);
+		//ï¿½ï¿½Ü­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Iï¿½ï¿½ï¿½Ü³Bï¿½z
 	}
 	
 	private void initializeButtons() {

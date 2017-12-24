@@ -15,17 +15,18 @@ import gamedev.td.GDSprite;
 import gamedev.td.TowerDefense;
 
 public class LvlSelectInputProcessor extends GDInputProcessor{
-	Music music;
+	Music [] music = new Music [4];
 	
 
 	List<GDSprite> buttons;
 	private LvlSelectScreen lvlSelectScreen;
 
-	public LvlSelectInputProcessor(TowerDefense towerDefense, LvlSelectScreen screen){
+	public LvlSelectInputProcessor(TowerDefense towerDefense, LvlSelectScreen screen,Music musicAll[]){
 		super(towerDefense);
 		this.lvlSelectScreen = screen;
+		this.music=musicAll;
 	}
-	
+
 	@Override
 	public boolean keyDown(int keycode) {
 		// TODO Auto-generated method stub
@@ -59,25 +60,28 @@ public class LvlSelectInputProcessor extends GDInputProcessor{
 						GameState.getInstance().initialize();
 						GameState.getInstance().setMap(LvlSelectScreen.MAP1);
 						towerDefense.switchScreen(towerDefense.getGameScreen());
-						music = Gdx.audio.newMusic(Gdx.files.internal("assets/map1.ogg"));
-						music.play();
+						//music = Gdx.audio.newMusic(Gdx.files.internal("assets/map1.ogg"));
+						music[1].play();
+						music[0].stop();
 						break;
 					case LvlSelectScreen.MAIN_MENU:
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
-						music = Gdx.audio.newMusic(Gdx.files.internal("assets/menu_bg.ogg"));
-						music.play();
+						//music = Gdx.audio.newMusic(Gdx.files.internal("assets/menu_bg.ogg"));
+						music[0].play();
 						break;
 					case LvlSelectScreen.MAP2:
 						GameState.getInstance().setMap(LvlSelectScreen.MAP2);
 						towerDefense.switchScreen(towerDefense.getGameScreen());
-						music = Gdx.audio.newMusic(Gdx.files.internal("assets/map2.ogg"));
-						music.play();
+						//music = Gdx.audio.newMusic(Gdx.files.internal("assets/map2.ogg"));
+						music[2].play();
+						music[0].stop();
 						break;
 					case LvlSelectScreen.MAP3:
 						GameState.getInstance().setMap(LvlSelectScreen.MAP3);
 						towerDefense.switchScreen(towerDefense.getGameScreen());
-						music = Gdx.audio.newMusic(Gdx.files.internal("assets/map3.ogg"));
-						music.play();
+						//music = Gdx.audio.newMusic(Gdx.files.internal("assets/map3.ogg"));
+						music[3].play();
+						music[0].stop();
 						break;
 					}
 				}

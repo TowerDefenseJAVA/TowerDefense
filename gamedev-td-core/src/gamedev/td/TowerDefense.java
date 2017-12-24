@@ -23,17 +23,19 @@ public class TowerDefense extends Game {
 	private LvlSelectScreen lvlSelectScreen;
 	private AboutScreen aboutScreen;
 	private SettingScreen settingScreen;
-	
+
+	private Music musicAll[] = new Music[4];
 	@Override
 	public void create () {
-		mainMenuScreen = new MainMenuScreen(this);
+		setMusic();
+		mainMenuScreen = new MainMenuScreen(this,musicAll);
 		gameScreen = new GameScreen(this);
 		gameOverScreen = new GameOverScreen(this);
-		
 		setAboutScreen(new AboutScreen(this));
 		setSettingScreen(new SettingScreen(this));
-		setLvlSelectScreen(new LvlSelectScreen(this));
-		setPauseScreen(new PauseScreen(this));
+		
+		setLvlSelectScreen(new LvlSelectScreen(this,musicAll));
+		setPauseScreen(new PauseScreen(this,musicAll));
 		
 		switchScreen(mainMenuScreen);
 
@@ -70,7 +72,13 @@ public class TowerDefense extends Game {
 	public void resume() {
 		super.resume();
 	}
-
+	public void setMusic() {
+		musicAll[1] = Gdx.audio.newMusic(Gdx.files.internal("assets/map1.ogg"));
+		musicAll[2] = Gdx.audio.newMusic(Gdx.files.internal("assets/map2.ogg"));
+		musicAll[3] = Gdx.audio.newMusic(Gdx.files.internal("assets/map3.ogg"));
+		musicAll[0] = Gdx.audio.newMusic(Gdx.files.internal("assets/menu_bg.ogg"));
+	}
+	
 	public MainMenuScreen getMainMenuScreen() {
 		return mainMenuScreen;
 	}

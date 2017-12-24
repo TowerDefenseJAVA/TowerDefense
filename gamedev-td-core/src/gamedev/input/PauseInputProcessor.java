@@ -9,19 +9,21 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 
 public class PauseInputProcessor extends GDInputProcessor{
-
+	Music [] music = new Music[4];
 	List<GDSprite> buttons;
 	private PauseScreen pauseScreen;
 
 	Color red = new Color(1,0,0,.5f);
 	Color white = new Color(1,1,1,.5f);
 
-	public PauseInputProcessor(TowerDefense towerDefense, PauseScreen screen){
+	public PauseInputProcessor(TowerDefense towerDefense, PauseScreen screen,Music[] musicAll){
 		super(towerDefense);
 		this.pauseScreen = screen;
+		this.music=musicAll;
 	}
 	
 	@Override
@@ -65,6 +67,10 @@ public class PauseInputProcessor extends GDInputProcessor{
 						GameState.getInstance().initialize();
 						GameState.getInstance().restart();
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
+						music[1].stop();
+						music[2].stop();
+						music[3].stop();
+						music[0].play();
 						break;
 					case PauseScreen.EXIT:
 						System.exit(1);

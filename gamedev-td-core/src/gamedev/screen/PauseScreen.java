@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -26,7 +27,7 @@ public class PauseScreen extends GDScreen{
 	public final static int RESUME = 0, RESTART = 1, MAIN_MENU = 2, EXIT = 3; 
 	GDSprite resumeBtn, restartBtn, menuBtn, exitBtn;
 	
-	public PauseScreen(TowerDefense towerDefense) {
+	public PauseScreen(TowerDefense towerDefense,Music[] musicAll) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.setToOrtho(true);
 		
@@ -35,9 +36,10 @@ public class PauseScreen extends GDScreen{
 		
 		initializeFont();
 		initializeButtons();
-		this.inputProcessor = new PauseInputProcessor(towerDefense, this);
+		this.inputProcessor = new PauseInputProcessor(towerDefense, this,musicAll);
 	}
 	
+
 	private void initializeButtons() {
 		buttons = new ArrayList<GDSprite>();
 		SpriteManager spriteManager = SpriteManager.getInstance();
