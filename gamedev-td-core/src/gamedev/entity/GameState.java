@@ -78,6 +78,10 @@ public class GameState {										//甇七lass��蝞∠����
 			}
 		}
 	}
+	public void Upgrade(List<Tower> list)
+	{
+		
+	}
 	public void initialize() {								//撠���������
 		newRoundInitialization();							//撠��������
 		level = 1;											//撠���閮剖�蝚砌����
@@ -226,7 +230,9 @@ public class GameState {										//甇七lass��蝞∠����
 	public boolean canBuyTower(Tower tower) {					//��蝣箄�摰嗆�鞎瑕�絲�����
 		return money >= tower.getCost();
 	}
-
+	public boolean canUpgradeTower(Tower tower) {
+		return money >= 100;
+	}
 	//嚙稽嚙緩嚙瑾嚙箠嚙碼嚙踝蕭穸X
 	public void setWaveSpawnTime(float waveSpawnTime) {			//閮剖��郭�芰������
 		if (waveSpawnTime < 0)									//�������
@@ -310,5 +316,9 @@ public class GameState {										//甇七lass��蝞∠����
 		towerToBuild.getPosition().set(MathHelper.PointToVector2(point));
 		deployTower(towerToBuild);								//撱箸�府憛�
 		record[point.x / 40][point.y / 40] = TileType.floor_yellow;
+	}
+	public void UpgradeTower()
+	{
+			money -= 100;
 	}
 }

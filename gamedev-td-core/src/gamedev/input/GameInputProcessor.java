@@ -97,6 +97,7 @@ public class GameInputProcessor extends GDInputProcessor {
 				selectedTower = tower;
 				userInterface.setTowerToUpgrade(tower);
 				System.out.println("[Input] User selected a tower, " + selectedTower.getTowerName() + " found at " + selectedTower.getPosition());
+				
 			}
 		}
 	}
