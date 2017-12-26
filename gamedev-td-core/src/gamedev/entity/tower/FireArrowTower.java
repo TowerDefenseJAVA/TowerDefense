@@ -7,9 +7,9 @@ import gamedev.td.GDSprite;
 public class FireArrowTower extends Tower {
 	
 	private int maxLevel = 5;
-	private static int damageLevels[] = {5};
-	private static int rangeLevels[] = {100};
-	private static float attackRateLevels[] = {0.8f};
+	private static int damageLevels[] = {5,10};
+	private static int rangeLevels[] = {100,100};
+	private static float attackRateLevels[] = {0.8f,10f};
 
 	public FireArrowTower(GDSprite sprite, int level, int cost) {
 		super(sprite, damageLevels[level], rangeLevels[level], attackRateLevels[level], cost, level, "Fire Arrow Tower");
@@ -20,9 +20,11 @@ public class FireArrowTower extends Tower {
 		if(level+1 <= maxLevel)
 			level++;
 		
-		damage = damageLevels[level];
-		attackRange = rangeLevels[level];
-		attackRate = attackRateLevels[level];
+		damage = 10;
+		attackRange = 200;
+		attackRate = 20f;
+		System.out.println("In");
+		System.out.println(damage);
 	}
 
 }

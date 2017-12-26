@@ -11,13 +11,13 @@ import java.util.List;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public abstract class Tower extends Entity {								//塔 類別 繼承實體類別
-	protected int damage, cost, upgradeCost, sellCost, level;				//      傷害/售價/升級花費/賣掉所得/階級
-	protected float attackRange, attackRate, attackTimer, attackCooldown;	//攻擊範圍/攻擊頻率/攻擊計時器/攻擊冷卻時間
-	protected Point2D.Float center;				//  中心
-	protected String towerName;					//塔 名稱類型
+public abstract class Tower extends Entity {								//憛� 憿 蝜潭撖阡��
+	protected int damage, cost, upgradeCost, sellCost, level;				//      �摰�/��/���鞎�/鞈����敺�/����
+	protected float attackRange, attackRate, attackTimer, attackCooldown;	//������/������/�����/��������
+	protected Point2D.Float center;				//  銝剖��
+	protected String towerName;					//憛� ��迂憿��
 
-	private ArrayList<Enemy> targets = null;	//取得 敵人列表
+	private ArrayList<Enemy> targets = null;	//���� �鈭箏�”
 
 	public Tower(GDSprite sprite, int damage, float attackRange,
 			float attackRate, int cost, int level, String towerName) {

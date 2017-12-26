@@ -290,6 +290,7 @@ public class GameUserInterface {
 
 	public void setTowerToUpgrade(Tower tower) {
 		
+		tower.upgrade();
 	}
 
 	/**

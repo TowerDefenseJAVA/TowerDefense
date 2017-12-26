@@ -8,7 +8,6 @@ import gamedev.td.GDSprite;
 import gamedev.td.SpriteManager;
 import gamedev.td.helper.MathHelper;
 
-
 import java.awt.Point;
 import java.util.List;
 
@@ -59,27 +58,27 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		int health;					//怪物血量
 		int moneyReward;			//擊殺金錢獎勵
 		float speed;				//怪物速度
-		int Mode = GameState.getInstance().getLevel_Mode(); //難度倍率 1,2,4
+
 		switch (type) {				//根據怪物種類 給予不同的初始值
 		
 		
 		case Spider:				//怪物為  蜘蛛
-			health = 200*Mode;
-			moneyReward = 5*Mode;
-			speed = 0.5f*Mode;
+			health = 200;
+			moneyReward = 5;
+			speed = 0.5f;
 			enemy = new Spider(sprite, health, moneyReward, speed, waypointList);
 			return enemy;
 			
 		case Skeleton:				//怪物為 骷髏
-			health = 500 * Mode ;
-			moneyReward = 8 * Mode;
-			speed = 1 * Mode;
+			health = 500;
+			moneyReward = 8;
+			speed = 1;
 			enemy = new Skeleton(sprite, health, moneyReward, speed, waypointList);
 			return enemy;
 		case Tank:				//怪物為  坦克
-			health = 500 * Mode;
-			moneyReward = 20000 * Mode;
-			speed = 1f * Mode;
+			health = 500;
+			moneyReward = 20000;
+			speed = 1f;
 			enemy = new Tank(sprite, health, moneyReward, speed, waypointList);
 			return enemy;
 			
@@ -88,7 +87,6 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 		}
 
 	}
-
 
 	protected Enemy(GDSprite sprite, int health, int moneyReward, float speed, List<Point> waypointList) {
 		super(sprite);

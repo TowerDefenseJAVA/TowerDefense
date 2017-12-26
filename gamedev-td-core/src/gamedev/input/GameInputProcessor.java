@@ -70,8 +70,9 @@ public class GameInputProcessor extends GDInputProcessor {
 			buildSelectedTower(x, y, pointer, button);
 
 			// Step 1
-			selectTowerToUpgrade(x, y, pointer, button);
+	
 		} else if (Gdx.input.isButtonPressed(Buttons.RIGHT)) {
+			selectTowerToUpgrade(x, y, pointer, button);
 			resetInteractions();
 
 		}
