@@ -20,8 +20,15 @@ public class TextureFactory {
 		if(texture == null){
 			if(key.equals("spider")){
 				path = "assets/img/babyrage.png";
-			}
-			else if(key.equals("grass")){
+			}else if(key.equals("slime")) {
+				path = "assets/img/slime.png";
+			}else if(key.equals("horse")) {
+				path = "assets/img/horse.png";
+			}else if(key.equals("potato")) {
+				path = "assets/img/potato.png";
+			}else if(key.equals("dragon")) {
+				path = "assets/img/dragon.png";
+			}else if(key.equals("grass")){
 				path = "assets/img/grass.png";
 			}
 			else if(key.equals("tank")){

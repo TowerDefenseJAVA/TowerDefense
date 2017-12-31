@@ -29,7 +29,7 @@ public class Level {
 	
 				int[][] enemies = {
 					// instances, enemy type
-					{5,1},{1,3},{5,2}
+					{3,4},{3,5},{3,6},{3,7}
 				};
 	
 				level = new Level(enemies);

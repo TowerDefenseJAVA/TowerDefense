@@ -1,6 +1,10 @@
 package gamedev.entity;
 
+import gamedev.entity.enemy.Dragon;
+import gamedev.entity.enemy.Horse;
+import gamedev.entity.enemy.Potato;
 import gamedev.entity.enemy.Skeleton;
+import gamedev.entity.enemy.Slime;
 import gamedev.entity.enemy.Spider;
 import gamedev.entity.enemy.Tank;
 import gamedev.td.Config;
@@ -20,7 +24,7 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 	}
 
 	public enum EnemyType {							//Enemy種類  目前只有蜘蛛   骷髏   *可增加*
-		Spider, Skeleton, Tank
+		Spider, Skeleton, Tank, Dragon, Potato, Slime, Horse
 	}
 
 	protected float angle;
@@ -80,6 +84,30 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 			moneyReward = 500;
 			speed = 0.3f;
 			enemy = new Tank(sprite, health, moneyReward, speed, waypointList);
+			return enemy;
+		case Dragon:
+			health = 500;
+			moneyReward = 5000;
+			speed = 0.5f;
+			enemy = new Dragon(sprite,health,moneyReward,speed,waypointList);
+			return enemy;
+		case Horse:
+			health = 500;
+			moneyReward = 5000;
+			speed = 0.5f;
+			enemy = new Horse(sprite,health,moneyReward,speed,waypointList);
+			return enemy;
+		case Slime:
+			health = 500;
+			moneyReward = 5000;
+			speed = 0.5f;
+			enemy = new Slime(sprite,health,moneyReward,speed,waypointList);
+			return enemy;
+		case Potato:
+			health = 500;
+			moneyReward = 5000;
+			speed = 0.5f;
+			enemy = new Potato(sprite,health,moneyReward,speed,waypointList);
 			return enemy;
 			
 		default:					//非 預設的怪物 回傳enemy型態  *可能另有她用*
@@ -267,6 +295,14 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 				return EnemyType.Skeleton;
 			case 2:
 				return EnemyType.Tank;
+			case 3:
+				return EnemyType.Dragon;
+			case 4:
+				return EnemyType.Slime;
+			case 5:
+				return EnemyType.Horse;
+			case 6:
+				return EnemyType.Potato;
 			default:
 				return EnemyType.Spider;
 		}

@@ -55,6 +55,6 @@ public class Tank extends Enemy {
 		}else if(condition == 3) {
 			return 0;
 		}
-		return 88;
+		return 0;
 	}
 }
