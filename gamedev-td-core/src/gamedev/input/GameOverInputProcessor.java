@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Color;
 
 import gamedev.entity.GameState;
@@ -13,13 +14,14 @@ import gamedev.td.GDSprite;
 import gamedev.td.TowerDefense;
 
 public class GameOverInputProcessor extends GDInputProcessor{
-
+	Music [] music = new Music [4];
 	List<GDSprite> buttons;
 	private GameOverScreen gameOverScreen;
 
-	public GameOverInputProcessor(TowerDefense towerDefense, GameOverScreen screen){
+	public GameOverInputProcessor(TowerDefense towerDefense, GameOverScreen screen,Music musicAll[]){
 		super(towerDefense);
 		this.gameOverScreen = screen;
+		this.music=musicAll;
 	}
 	
 	@Override
@@ -57,6 +59,10 @@ public class GameOverInputProcessor extends GDInputProcessor{
 						break;
 					case GameOverScreen.MAIN_MENU:
 						towerDefense.switchScreen(towerDefense.getMainMenuScreen());
+						music[1].stop();
+						music[2].stop();
+						music[3].stop();
+						music[0].play();
 						break;
 					case GameOverScreen.EXIT:
 						System.exit(1);

@@ -12,7 +12,6 @@ import gamedev.screen.SettingScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
-import com.badlogic.gdx.audio.Sound;
 
 public class TowerDefense extends Game {
 
@@ -30,7 +29,7 @@ public class TowerDefense extends Game {
 		setMusic();
 		mainMenuScreen = new MainMenuScreen(this,musicAll);
 		gameScreen = new GameScreen(this);
-		gameOverScreen = new GameOverScreen(this);
+		gameOverScreen = new GameOverScreen(this,musicAll);
 		setAboutScreen(new AboutScreen(this));
 		setSettingScreen(new SettingScreen(this));
 		

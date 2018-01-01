@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -26,7 +27,7 @@ public class GameOverScreen extends GDScreen{
 	public final static int RESTART = 0, MAIN_MENU = 1, EXIT = 2; 
 	GDSprite restartBtn, menuBtn, exitBtn, background;
 	
-	public GameOverScreen(TowerDefense towerDefense) {
+	public GameOverScreen(TowerDefense towerDefense,Music[] musicAll) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.setToOrtho(true);
 		
@@ -36,7 +37,7 @@ public class GameOverScreen extends GDScreen{
 		
 		initializeFont();
 		initializeButtons();
-		this.inputProcessor = new GameOverInputProcessor(towerDefense, this);
+		this.inputProcessor = new GameOverInputProcessor(towerDefense, this,musicAll);
 	}
 	
 	private void initializeButtons() {
