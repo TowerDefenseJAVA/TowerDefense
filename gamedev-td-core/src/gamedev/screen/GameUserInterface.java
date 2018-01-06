@@ -98,7 +98,7 @@ public class GameUserInterface {
 		uiBackground.setPosition(0, userInterfaceY);
 		
 		infoBackground = spriteManager.getSprite("info_bg");
-		infoBackground.setPosition(400, userInterfaceY + 10);
+		infoBackground.setPosition(390, userInterfaceY + 8);
 
 
 		sellBtn = spriteManager.getSprite("sell_button");
