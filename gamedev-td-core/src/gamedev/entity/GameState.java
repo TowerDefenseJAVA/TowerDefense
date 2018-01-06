@@ -95,7 +95,14 @@ public class GameState {										//甇七lass��蝞∠����
 	public void newRoundInitialization(){					
 		spawnDelay = 0;										
 		spawnedEnemies = 0;									
-		enemiesToBeSpawned = new ArrayList<Integer>();		
+		enemiesToBeSpawned = new ArrayList<Integer>();
+		if(enemies != null) {
+			for(Enemy i : enemies) {
+				if(i.active == false)continue;
+				i.active = false;
+				playerLife--;
+			}	
+		}
 		enemies = new ArrayList<Enemy>();					
 		projectiles = new ArrayList<Projectile>();			
 		
