@@ -85,25 +85,25 @@ public abstract class Enemy extends Entity {		//Enemy型態的物件
 			speed = 0.3f;
 			enemy = new Tank(sprite, health, moneyReward, speed, waypointList);
 			return enemy;
-		case Dragon:
+		case Dragon:  //怪物為 龍
 			health = 500;
 			moneyReward = 5000;
 			speed = 0.5f;
 			enemy = new Dragon(sprite,health,moneyReward,speed,waypointList);
 			return enemy;
-		case Horse:
+		case Horse:  //怪物為 馬
 			health = 500;
 			moneyReward = 5000;
 			speed = 0.5f;
 			enemy = new Horse(sprite,health,moneyReward,speed,waypointList);
 			return enemy;
-		case Slime:
+		case Slime:  //史萊姆
 			health = 500;
 			moneyReward = 5000;
 			speed = 0.5f;
 			enemy = new Slime(sprite,health,moneyReward,speed,waypointList);
 			return enemy;
-		case Potato:
+		case Potato:  //馬鈴薯
 			health = 500;
 			moneyReward = 5000;
 			speed = 0.5f;

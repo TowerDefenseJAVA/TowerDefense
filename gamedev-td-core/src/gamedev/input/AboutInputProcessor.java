@@ -5,7 +5,6 @@ import java.util.List;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
 import gamedev.screen.AboutScreen;
-import gamedev.screen.SettingScreen;
 import gamedev.td.GDSprite;
 import gamedev.td.TowerDefense;
 
@@ -14,7 +13,7 @@ public class AboutInputProcessor extends GDInputProcessor{
 	
 
 	List<GDSprite> buttons;
-	private AboutScreen aboutScreen;//宣告一個設定About螢幕的物件
+	private AboutScreen aboutScreen;
 
 	public AboutInputProcessor(TowerDefense towerDefense, AboutScreen screen){
 		super(towerDefense);
@@ -41,7 +40,6 @@ public class AboutInputProcessor extends GDInputProcessor{
 
 	@Override
 	public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-		// 觸擊到呼叫的函式
 		
 		buttons = aboutScreen.getButtons();
 		for (int i = 0; i < buttons.size(); i++) {

@@ -11,13 +11,13 @@ import java.util.List;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
-public abstract class Tower extends Entity {								//憛� 憿 蝜潭撖阡��
-	protected int damage, cost, upgradeCost, sellCost, level;				//      �摰�/��/���鞎�/鞈����敺�/����
-	protected float attackRange, attackRate, attackTimer, attackCooldown;	//������/������/�����/��������
-	protected Point2D.Float center;				//  銝剖��
-	protected String towerName;					//憛� ��迂憿��
+public abstract class Tower extends Entity {								
+	protected int damage, cost, upgradeCost, sellCost, level;			
+	protected float attackRange, attackRate, attackTimer, attackCooldown;	
+	protected Point2D.Float center;				
+	protected String towerName;					
 
-	private ArrayList<Enemy> targets = null;	//���� �鈭箏�”
+	private ArrayList<Enemy> targets = null;
 
 	public Tower(GDSprite sprite, int damage, float attackRange,
 			float attackRate, int cost, int level, String towerName) {
@@ -177,6 +177,4 @@ public abstract class Tower extends Entity {								//憛� 憿 蝜潭
 	public void setCenter(float x, float y) {
 		center.setLocation(x, y);
 	}
-
-	
 }

@@ -12,24 +12,21 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
 public class LvlSelectScreen extends GDScreen{
-	//�~��GDScreen���e��
 
 	
-	OrthographicCamera camera;//����
+	OrthographicCamera camera;
 	SpriteBatch spriteBatch;// is given a texture and coordinates for each rectangle to be drawn.
 	BitmapFont font;//LibGdx makes use of bitmap files (pngs) to render fonts.Each glyph in the font has a corresponding TextureRegion
 	private List<GDSprite> buttons;
 	public final static int MAP1 = 1, MAP2 = 2, MAP3 = 3, MAIN_MENU = 0;
-	GDSprite menuBtn, map1Btn, map2Btn, map3Btn, background;//�ŧiGDSprite(Ĳ�o�ϧΪ���)������
+	GDSprite menuBtn, map1Btn, map2Btn, map3Btn, background;
 	
-	//�غc�l
 	public LvlSelectScreen(TowerDefense towerDefense ,Music musicAll[]) {
 		camera = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 		camera.setToOrtho(true);
@@ -38,10 +35,10 @@ public class LvlSelectScreen extends GDScreen{
 		
 		spriteBatch.setProjectionMatrix(camera.combined);
 		
-		initializeFont();//��l��
-		initializeButtons();//��l�ƫ��s����
+		initializeFont();
+		initializeButtons();
 		this.inputProcessor = new LvlSelectInputProcessor(towerDefense, this, musicAll);
-		//��ܭ������I���ܳB�z
+
 	}
 	
 	private void initializeButtons() {

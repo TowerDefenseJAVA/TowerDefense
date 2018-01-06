@@ -10,12 +10,11 @@ import gamedev.entity.TowerFactory.TowerType;
 import java.util.HashMap;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 
 public class SpriteManager {
 	private static SpriteManager instance;
-	private static HashMap<String, Texture> tiles, towers, enemies;
+	private static HashMap<String, Texture> tiles, towers;
 
 	GDSprite highlightTile, uiSprite, towerLabel, heartSprite[], emeraldSprite,
 			waveSprite, uiTowerHighlight, redHighlight, clonedTowerSprite,

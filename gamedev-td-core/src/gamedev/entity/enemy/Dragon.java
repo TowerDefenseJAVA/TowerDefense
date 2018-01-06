@@ -1,7 +1,6 @@
 package gamedev.entity.enemy;
 
 import gamedev.entity.Enemy;
-import gamedev.td.Config;
 import gamedev.td.GDSprite;
 
 import java.awt.Point;

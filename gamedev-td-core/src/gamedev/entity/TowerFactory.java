@@ -8,8 +8,6 @@ import gamedev.entity.tower.EggTower;
 import gamedev.entity.tower.FireArrowTower;
 import gamedev.entity.tower.IceArrowTower;
 import gamedev.entity.tower.PotionTower;
-import gamedev.entity.tower.SandTower;
-import gamedev.entity.tower.WoodTower;
 import gamedev.td.GDSprite;
 import gamedev.td.SpriteManager;
 
@@ -52,12 +50,6 @@ public class TowerFactory {
 			case Ice_Arrow_Tower:
 				cost = 250;
 				return new IceArrowTower(towerSprite, level, cost);
-			case Sand_Tower:
-				cost = 120;
-				return new SandTower(towerSprite, level, cost);
-			case Wood_Tower:
-				cost = 150;
-				return new WoodTower(towerSprite, level, cost);
 				
 		}
 		

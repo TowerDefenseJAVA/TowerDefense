@@ -260,13 +260,7 @@ public class TextureFactory {
 			else if(key.equals("potion")){
 				path = "assets/img/projectile_potion.png";
 			}
-			else if(key.equals("sand")){
-				path = "assets/img/projectile_sand.png";
-			}
-			else if(key.equals("wood")){
-				path = "assets/img/projectile_wood.png";
-			}
-			
+
 			
 			else{
 				return null;

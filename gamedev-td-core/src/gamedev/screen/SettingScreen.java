@@ -11,7 +11,6 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
 import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 
-import gamedev.input.LvlSelectInputProcessor;
 import gamedev.input.SettingInputProcessor;
 import gamedev.td.GDSprite;
 import gamedev.td.SpriteManager;
@@ -47,14 +46,14 @@ public class SettingScreen extends GDScreen{
 		background = spriteManager.getSprite("lvlselectbg");
 		background.setPosition(0, 0);
 		
-		easyBtn = spriteManager.getSprite("button_easy"); // 圖檔
-		easyBtn.setPosition(160,360);	// 位置
+		easyBtn = spriteManager.getSprite("button_easy"); // ����
+		easyBtn.setPosition(160,360);	// 雿蔭
 		
-		normalBtn = spriteManager.getSprite("button_normal"); // 圖檔
-		normalBtn.setPosition(160,400);	// 位置
+		normalBtn = spriteManager.getSprite("button_normal"); // ����
+		normalBtn.setPosition(160,400);	// 雿蔭
 		
-		hardBtn = spriteManager.getSprite("button_hard"); // 圖檔
-		hardBtn.setPosition(160,440);	// 位置
+		hardBtn = spriteManager.getSprite("button_hard"); // ����
+		hardBtn.setPosition(160,440);	// 雿蔭
 		
 		menuBtn = spriteManager.getSprite("back_to_menu_button");
 		menuBtn.setPosition(160,520);
@@ -81,7 +80,7 @@ public class SettingScreen extends GDScreen{
 
 	@Override
 	public void render(float delta) {
-		// TODO �۰ʲ��ͪ���k Stub
+		// TODO 嚙諛動莎蕭嚙談迎蕭嚙踝蕭k Stub
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT | GL20.GL_DEPTH_BUFFER_BIT |
 				(Gdx.graphics.getBufferFormat().coverageSampling?GL20.GL_COVERAGE_BUFFER_BIT_NV:0));
@@ -97,37 +96,37 @@ public class SettingScreen extends GDScreen{
 
 	@Override
 	public void resize(int width, int height) {
-		// TODO �۰ʲ��ͪ���k Stub
+		// TODO 嚙諛動莎蕭嚙談迎蕭嚙踝蕭k Stub
 		
 	}
 
 	@Override
 	public void show() {
-		// TODO �۰ʲ��ͪ���k Stub
+		// TODO 嚙諛動莎蕭嚙談迎蕭嚙踝蕭k Stub
 		
 	}
 
 	@Override
 	public void hide() {
-		// TODO �۰ʲ��ͪ���k Stub
+		// TODO 嚙諛動莎蕭嚙談迎蕭嚙踝蕭k Stub
 		
 	}
 
 	@Override
 	public void pause() {
-		// TODO �۰ʲ��ͪ���k Stub
+		// TODO 嚙諛動莎蕭嚙談迎蕭嚙踝蕭k Stub
 		
 	}
 
 	@Override
 	public void resume() {
-		// TODO �۰ʲ��ͪ���k Stub
+		// TODO 嚙諛動莎蕭嚙談迎蕭嚙踝蕭k Stub
 		
 	}
 
 	@Override
 	public void dispose() {
-		// TODO �۰ʲ��ͪ���k Stub
+		// TODO 嚙諛動莎蕭嚙談迎蕭嚙踝蕭k Stub
 		
 	}
 

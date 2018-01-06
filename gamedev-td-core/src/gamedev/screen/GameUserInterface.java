@@ -23,9 +23,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 public class GameUserInterface {
 	BitmapFont towerInfoFont, costFont;
-	GDSprite uiBackground, infoBackground, towerToPutSprite, upgradeBtn, sellBtn,
-			upgradeToCorruptedEgg, upgradeToSlime, upgradeToWood,
-			upgradeToSand, upgradeToFireArrow, upgradeToIceArrow,
+	GDSprite uiBackground, infoBackground, towerToPutSprite, sellBtn,
 				tileHighlight, towerBtnHighlight, ghostTower, 
 				waveLabel, towerLabel, moneyLabel;
 
@@ -102,8 +100,6 @@ public class GameUserInterface {
 		infoBackground = spriteManager.getSprite("info_bg");
 		infoBackground.setPosition(400, userInterfaceY + 10);
 
-		upgradeBtn = spriteManager.getSprite("upgrade_button");
-		upgradeBtn.setPosition(300, userInterfaceY + 120);
 
 		sellBtn = spriteManager.getSprite("sell_button");
 		sellBtn.setPosition(425, userInterfaceY + 120);
@@ -114,7 +110,6 @@ public class GameUserInterface {
 		towerRangeRenderer = new TowerRangeRenderer();
 		
 		initializeHeartSprites();
-		initializeUpgradeButtons();
 		initializeBuildTowerButtons();
 	}
 
@@ -136,28 +131,7 @@ public class GameUserInterface {
 
 	}
 
-	private void initializeUpgradeButtons() {
-		SpriteManager spriteManager = SpriteManager.getInstance();
-		
-		upgradeToWood = spriteManager.getSprite("upgrade_to_wood");
-		upgradeToWood.setPosition(300, userInterfaceY + 120);
-
-		upgradeToSand = spriteManager.getSprite("upgrade_to_sand");
-		upgradeToSand.setPosition(425, userInterfaceY + 120);
-
-		upgradeToFireArrow = spriteManager.getSprite("upgrade_to_fireArrow");
-		upgradeToFireArrow.setPosition(300, userInterfaceY + 120);
-
-		upgradeToIceArrow = spriteManager.getSprite("upgrade_to_iceArrow");
-		upgradeToIceArrow.setPosition(425, userInterfaceY + 120);
-
-		upgradeToSlime = spriteManager.getSprite("upgrade_to_slime");
-		upgradeToSlime.setPosition(300, userInterfaceY + 120);
-
-		upgradeToCorruptedEgg = spriteManager.getSprite("upgrade_to_cegg");
-		upgradeToCorruptedEgg.setPosition(425, userInterfaceY + 120);
-	}
-
+	
 	public void draw(SpriteBatch spriteBatch) {
 		towerRangeRenderer.render(); // put towerRangeRenderer outside spriteBatch begin and end (issue in drawing)
 		spriteBatch.begin();
@@ -178,22 +152,6 @@ public class GameUserInterface {
 		if (towerToBuild != null){
 			// Draw tower descriptions
 			drawTowerInfo(spriteBatch);
-		}else if (towerToUpgrade != null){
-			upgradeBtn.draw(spriteBatch);
-			costFont.draw(spriteBatch, selectedDeployedTower.getUpgradeCost() + "", upgradeBtn.getX() + 85, upgradeBtn.getY() + 6);
-			sellBtn.draw(spriteBatch);
-			costFont.draw(spriteBatch, selectedDeployedTower.getSellCost() + "", sellBtn.getX() + 75, sellBtn.getY() + 6);
-
-			if (selectedDeployedTower instanceof ArrowTower) {
-				upgradeToFireArrow.draw(spriteBatch);
-				upgradeToIceArrow.draw(spriteBatch);
-			} else if (selectedDeployedTower instanceof DirtTower) {
-				upgradeToWood.draw(spriteBatch);
-				upgradeToSand.draw(spriteBatch);
-			} else if (selectedDeployedTower instanceof EggTower) {
-				upgradeToSlime.draw(spriteBatch);
-				upgradeToCorruptedEgg.draw(spriteBatch);
-			}
 		}
 		
 		towerBtnHighlight.draw(spriteBatch);
@@ -224,10 +182,6 @@ public class GameUserInterface {
 		}
 		
 		// Image icon
-//		if (towerSprite != null) {
-//			towerSprite.setPosition(x + 150, userInterfaceY + 25);
-//			towerSprite.draw(spriteBatch);
-//		} 
 		if (towerToPutSprite != null) {
 			towerToPutSprite.setPosition(x + 150, userInterfaceY + 25);
 			towerToPutSprite.draw(spriteBatch);

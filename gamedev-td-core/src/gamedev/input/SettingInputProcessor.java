@@ -4,13 +4,8 @@ import java.util.List;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Buttons;
-import com.badlogic.gdx.graphics.Color;
-
 import gamedev.entity.GameState;
-import gamedev.screen.GameOverScreen;
-import gamedev.screen.MainMenuScreen;
 import gamedev.screen.SettingScreen;
-import gamedev.screen.LvlSelectScreen;
 import gamedev.td.GDSprite;
 import gamedev.td.TowerDefense;
 

@@ -4,9 +4,6 @@ import gamedev.entity.GameState;
 import gamedev.entity.Tower;
 import gamedev.entity.TowerFactory;
 import gamedev.entity.TowerFactory.TowerType;
-import gamedev.entity.tower.ArrowTower;
-import gamedev.entity.tower.DirtTower;
-import gamedev.screen.GameScreen;
 import gamedev.screen.GameUserInterface;
 import gamedev.td.Config;
 import gamedev.td.GDSprite;
@@ -14,7 +11,6 @@ import gamedev.td.TowerDefense;
 import gamedev.td.helper.MathHelper;
 
 import java.awt.Point;
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 import com.badlogic.gdx.Gdx;
@@ -22,17 +18,14 @@ import com.badlogic.gdx.Input.Buttons;
 
 public class GameInputProcessor extends GDInputProcessor {
 
-	private GameScreen gameScreen;
 	private Tower towerToBuild, selectedTower;
 
-	private GDSprite selectedSprite;
 	private GameUserInterface userInterface;
 
 	public GameInputProcessor(TowerDefense towerDefense) {
 		super(towerDefense);
 		userInterface = new GameUserInterface();
 		towerToBuild = null;
-		selectedSprite = null;
 		selectedTower = null;
 	}
 
@@ -143,20 +136,6 @@ public class GameInputProcessor extends GDInputProcessor {
 	}
 	
 	
-	//TODO: rework this method to follow the design
-	private void upgradeButtonIntesersect(int screenX, int screenY) {
-		if(selectedTower != null) {
-	//		TowerInformation towerInfo = gameScreen.getUiInformation();
-			if(selectedTower instanceof ArrowTower) {
-				// TODO: Check if mouse intersects with upgradeToFireArrow or upgradeToIceArrow sprite in TowerInformation
-			}
-			else if(selectedTower instanceof DirtTower) {
-				
-			}
-		}
-		
-	}
-
 	@Override
 	public boolean touchUp(int screenX, int screenY, int pointer, int button) {
 
@@ -180,15 +159,6 @@ public class GameInputProcessor extends GDInputProcessor {
 		}
 		
 		
-// TODO: Don't know what this code is for
-		
-//		if (selectedTower == null) {
-//			if (state.isTowerPlaceable(point) == false) {
-//				gameScreen.getTowerRangeRenderer().setColor(red);
-//			} else
-//				gameScreen.getTowerRangeRenderer().setColor(white);
-//		} else
-//			gameScreen.getTowerRangeRenderer().setColor(white);
 
 
 		List<GDSprite> towerSprites = userInterface.getBuildTowerButtons();
@@ -222,8 +192,6 @@ public class GameInputProcessor extends GDInputProcessor {
 		if (screenX < 0 || screenY < 0)
 			return null;
 
-		// TODO: Check if screen exceeds map, if so, return null.
-		// if (screenX > )
 		
 		int truncateX = screenX / Config.tileSize;
 		int truncateY = screenY / Config.tileSize;
